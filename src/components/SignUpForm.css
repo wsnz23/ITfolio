@@ -1,0 +1,105 @@
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../assets/5.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .wrapper{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(9px);
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px 40px;
+  }
+  .wrapper h1{
+    font-size:36px;
+    text-align: center;
+  }
+  .wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+  }
+  .input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+  }
+  .input-box input::placeholder{
+    color: #ffffff;
+  }
+  .input-box i{
+    position: absolute;
+    right: 20px;
+    top: 30%;
+    transform: translate(-50%);
+    font-size: 20px;
+  
+  }
+  .dropdown {
+    position: relative;
+    width: 100%;
+  }
+  
+  #myDropdown {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    color: rgb(255, 255, 255);
+    font-size: 16px; 
+    cursor: pointer;
+    margin-bottom: 25px;
+  }
+  
+  #myDropdown:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5); /* Change the border color on focus if desired */
+  }
+
+  label {
+    display: block;
+    margin-left: 10px; /* Adjust the margin as needed */
+    margin-top: 5px; /* Adjust the margin-top as needed */
+    margin-bottom: 5px; /* Optional: Add some bottom margin for spacing */
+    color: white; /* Label text color (adjust as needed) */
+  }
+  #myDropdown option {
+    color: black; /* Set the color for options */
+  }
+  .wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+  
+  }
+  .register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .register-link p a:hover{
+    text-decoration: underline;
+  }
+  .register-link p{
+    color: #fff;
+  }
+
+ 
