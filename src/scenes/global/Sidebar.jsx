@@ -170,6 +170,7 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import StarIcon from '@mui/icons-material/Star';
+import Topbar from "./Topbar";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -195,7 +196,10 @@ const Sidebar = () => {
   const [selected, setSelected] = useState("Dashboard");
 
   return (
+    <Box>
+      <Topbar />
     <Box
+    
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
@@ -216,9 +220,10 @@ const Sidebar = () => {
         display: "flex", // Use flex display for container
       }}
     >
+      
       <ProSidebar collapsed={isCollapsed}
         sx={{
-          height: "100px", // Set the height to 100% for ProSidebar
+          height: "20px", // Set the height to 100% for ProSidebar
         }}
       >
         <Menu iconShape="square">
@@ -412,7 +417,7 @@ const Sidebar = () => {
           </Box>
         </Menu>
       </ProSidebar>
-    </Box>
+    </Box></Box>
   );
 };
 
