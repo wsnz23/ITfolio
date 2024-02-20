@@ -112,3 +112,14 @@
   .wrapper .bt .s{
   padding-left: 10px;
   }
+  /* RedRadioButton.css */
+
+.red-radio {
+  /* تحديد لون النقطة الدائرية للراديو */
+  background-color: red;
+}
+
+/* تغيير لون النقطة عندما يكون الراديو محددًا (مختارًا) */
+.red-radio:checked {
+  background-color: darkred;
+}

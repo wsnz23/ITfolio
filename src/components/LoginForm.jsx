@@ -1,9 +1,10 @@
 import React from 'react';
 import './LoginForm.css';
 import '../routes/SignUp.js';
+ // eslint-disable-next-line
 import {FaUser,FaLock} from "react-icons/fa";
 import { Link } from 'react-router-dom';
-
+import Dashboard from '../scenes/dashbord/index.jsx';
 
 const LoginForm = () => {
   return (
@@ -22,9 +23,9 @@ const LoginForm = () => {
       </div>
       <div className="remember-forgot">
         <label><input type="checkbox"/>Remember Me</label>
-        <a href="#">Forgot Password</a>
+        <Link href="#">Forgot Password</Link>
       </div>
-      <button type="submit" className="btn">Login</button>
+      <button type="submit" className="btn" ><Link className="btn" to = '/Dashboard'>Login</Link></button>
       <div className="register-link">
         <p>Don't have an account? <Link to='/SignUp'>Register</Link></p>
       </div>

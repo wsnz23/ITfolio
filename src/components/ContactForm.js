@@ -1,6 +1,6 @@
 import React from 'react'
 import './ContactForm.css';
-import Intro from "../assets/con.jpg"
+
 import {FaPaperPlane} from "react-icons/fa";
 const ContactForm = () => {
   return (

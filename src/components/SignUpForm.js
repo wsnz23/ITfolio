@@ -1,7 +1,7 @@
 import React ,{useState} from 'react';
 import './SignUpForm.css';
 import '../routes/SignUp.js';
-import {FaUser,FaLock} from "react-icons/fa";
+// import {FaUser,FaLock} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 
