@@ -5,13 +5,19 @@ import Sidebar from "../global/Sidebar";
 
 const Pie = () => {
   return (
-    <Box m="5px">
-      <Header title="Pie Chart" subtitle="Simple Pie Chart" />
+    <Box m="5px" >
+
+      {/* <Header title="Pie Chart" subtitle="Simple Pie Chart" /> */}
       
       <Box display="flex">
         <Sidebar />
-        <Box flex="1" height="75vh">
+        <Box flex="1" height="75vh" 
+        marginTop="150px"
+        >
           <PieChart />
+          Pie Chart 
+          <br></br>
+          Simple Pie Chart
         </Box>
       </Box>
     </Box>
