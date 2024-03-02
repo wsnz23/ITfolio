@@ -5,6 +5,7 @@ import About from "./routes/About";
 import Login from "./routes/Login";
 import Contact from "./routes/Contact";
 import SignUp from "./routes/SignUp";
+import Material from "./scenes/matereal/material";
 // import {Route,Routes} from "react-router-dom";
 // import Topbar from "./scenes/global/Topbar";
 
@@ -65,7 +66,7 @@ function App() {
             {/* <Topbar setIsSidebar={setIsSidebar} /> */}
             <Routes>
              
-              <Route path="/team" element={<Team />} />
+              <Route path="/material" element={<Material />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/" element={<Home />} />
