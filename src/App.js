@@ -44,7 +44,7 @@ import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 
 import Dashboard from "../src/scenes/dashbord";
-import Team from "./scenes/team";
+import Team from "./scenes/Userprofile";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
 import Pie from "./scenes/pie";
@@ -76,6 +76,7 @@ function App() {
              <Route path="/Contact" element={<Contact />} />
            <Route path="/SignUp" element={<SignUp />} />
            <Route path="/Pie" element={<Pie />} />
+           <Route path="/Userprofile" element={<Team />} />
 
             </Routes>
           </main>

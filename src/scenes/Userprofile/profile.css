@@ -1,0 +1,164 @@
+/* Profile.css
+
+.profile-info {
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  
+  .info-item {
+    margin-bottom: 15px;
+  }
+  
+  .info-label {
+    font-weight: bold;
+  }
+  
+  .info-value {
+    font-weight: normal;
+  }
+  
+  .infor {
+    display: flex;
+   
+    align-items: center;
+   }
+  
+  /* Add any additional styling based on your design */
+   */
+.view{
+  display: flex;
+
+}
+ 
+    .container {
+      /* display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      flex-wrap: nowrap; */
+      padding-top: 113px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 102%;
+      width: 56%;
+      flex-direction: row;
+      flex-wrap: nowrap;
+  }
+
+  
+  .profile-picture {
+    width: 214px;
+    margin-bottom: 59px;
+    text-align: center;
+  }
+  
+  .profile-picture img {
+    display: block;
+    width: 188px;
+    height: 206px;
+    border-radius: 22%;
+    box-shadow: 78px 17px 73px rgba(0, 5, 0, 1.1);
+
+  }
+  
+  .info-item {
+    display: flex;
+    margin-bottom: 29px;
+    text-align: justify;
+    flex-direction: inherit;
+    align-content: space-between;
+    display: flex;
+    margin-bottom: 29px;
+    text-align: center;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  
+  .info-label {
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: 18px; /* Adjust as needed */
+  }
+  
+  .info-value {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 16px; /* Adjust as needed */
+  }
+  
+  .edit-button {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+
+  .profile-info{
+    background-color: #7e7d7d00;
+    border-radius: 40px;
+    height: 60vh;
+    width: 120vh;
+    display: flex;
+    align-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 59px 56px 100px rgba(0, 5, 0, 1.1);
+  }
+
+  .Bp {
+    color: #fff;
+    background-color: #1f2a40;
+    border: 1px solid #3498db42;
+    border-radius: 7px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 13px;
+  }
+
+  .Bp:hover {
+    background-color: #1b6698; 
+    color: black;
+    
+  }
+
+
+  .change-picture-btn{
+    color: #fff; /* Text color */
+    background-color: #3498db; /* Background color */
+    border: 1px solid #3498db; /* Border color */
+    border-radius: 7px; /* Border radius for rounded corners */
+    padding: 10px 20px; /* Padding for inside the button */
+    cursor: pointer; /* Show pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+  
+    /* Additional styles for better visual appearance */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+  }
+
+  .change-picture-btn:hover{
+
+    background-color: #1b6698; 
+    color: black;
+
+  }

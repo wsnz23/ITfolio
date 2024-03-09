@@ -172,6 +172,9 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import StarIcon from '@mui/icons-material/Star';
 import Topbar from "./Topbar";
 import Material from "../matereal/material";
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
+import PollTwoToneIcon from '@mui/icons-material/PollTwoTone';
+import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -198,7 +201,7 @@ const Sidebar = () => {
 
   return (
     <Box>
-      <Topbar />
+      {/* <Topbar /> */}
     <Box
     
       sx={{
@@ -254,7 +257,7 @@ const Sidebar = () => {
             )}
           </MenuItem>
 
-          {!isCollapsed && (
+          {/* {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
@@ -279,7 +282,7 @@ const Sidebar = () => {
                 </Typography>
               </Box>
             </Box>
-          )}
+          )} */}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
@@ -299,8 +302,8 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="User Profile"
-              to="/team"
-              icon={<PeopleOutlinedIcon />}
+              to="/Userprofile"
+              icon={<AccountCircleTwoToneIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -343,7 +346,7 @@ const Sidebar = () => {
             <Item
               title="Pie Chart"
               to="/pie"
-              icon={<PieChartOutlineOutlinedIcon />}
+              icon={<PollTwoToneIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -364,7 +367,7 @@ const Sidebar = () => {
             <Item
               title="Material"
               to="/material"
-              icon={<PieChartOutlineOutlinedIcon />}
+              icon={<MenuBookTwoToneIcon />}
               selected={selected}
               setSelected={setSelected}
             />
