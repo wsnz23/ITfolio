@@ -80,11 +80,11 @@ function App() {
              <Route path="/Contact" element={<Contact />} />
            <Route path="/SignUp" element={<SignUp />} />
            <Route path="/Pie" element={<Pie />} />
-<<<<<<< HEAD
+
            <Route path="/Userprofile" element={<Team />} />
-=======
+
           
->>>>>>> hamza
+
 
             </Routes>
           </main>

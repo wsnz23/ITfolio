@@ -171,14 +171,13 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import StarIcon from '@mui/icons-material/Star';
 import Topbar from "./Topbar";
-<<<<<<< HEAD
-import Material from "../matereal/material";
+
+
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import PollTwoToneIcon from '@mui/icons-material/PollTwoTone';
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
-=======
+
 import mat from "../matereal/mat";
->>>>>>> hamza
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -370,13 +369,10 @@ const Sidebar = () => {
             /> */}
             <Item
               title="Material"
-<<<<<<< HEAD
-              to="/material"
-              icon={<MenuBookTwoToneIcon />}
-=======
+
               to="/mat"
-              icon={<PieChartOutlineOutlinedIcon />}
->>>>>>> hamza
+              icon={<MenuBookTwoToneIcon />}
+
               selected={selected}
               setSelected={setSelected}
             />
