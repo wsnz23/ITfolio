@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Topbar from "../global/Topbar";
 import menuData from './menuData';  // Adjust the import path based on your project structure
 import './mm.css';
+import Popup from '../../components/Popup.js';
 
 // function Material() {
 //   const [openSubMenu, setOpenSubMenu] = useState([]);
@@ -88,10 +89,7 @@ function Material() {
     });
   };
 
-  const riat = () => {
-    alert('You clicked the "hi" button!');
-    setShowQuestions(true); // إظهار صفحة الأسئلة عند النقر على الزر "hi"
-  };
+  const [openPopups, setOpenPopups] = useState([]);
 
   const renderSubMenu = (subMenu, parentIndex) => {
     return (
@@ -99,19 +97,225 @@ function Material() {
         {subMenu.map((subItem, index) => (
           <li key={index} className={openSubMenu[parentIndex] ? 'open' : ''} onClick={() => toggleSubMenu(parentIndex)}>
             {subItem.label}
-            <button onClick={riat}>renderQuestions</button>
-            {}
+            <button onClick={() => handleButtonPopup(index)}>renderQuestions</button>
+            <Popup trigger={openPopups[index]} setTrigger={(value) => handlePopupChange(index, value)}>
+           <table> <thead>
+      <tr>
+        <th>Skill</th>
+        <th>Question</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Skill 1</td>
+        <td>Question 1</td>
+        <td> 
+          <div class="rating-buttons">
+    <label>
+      <input type="radio" name="rating" value="poor"/>
+      Poor
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="good"/>
+      Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="very-good"/>
+      Very Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="excellent"/>
+      Excellent
+    </label>
+  </div>
+</td>
+      </tr>
+      <tr>
+        <td>Skill 2</td>
+        <td>Question 2</td>
+        <td> <div class="rating-buttons">
+    <label>
+      <input type="radio" name="rating" value="poor"/>
+      Poor
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="good"/>
+      Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="very-good"/>
+      Very Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="excellent"/>
+      Excellent
+    </label>
+  </div></td>
+      </tr>
+      <tr>
+        <td>Skill 3</td>
+        <td>Question 3</td>
+        <td> <div class="rating-buttons">
+    <label>
+      <input type="radio" name="rating" value="poor"/>
+      Poor
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="good"/>
+      Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="very-good"/>
+      Very Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="excellent"/>
+      Excellent
+    </label>
+  </div></td>
+      </tr>
+      <tr>
+        <td>Skill 4</td>
+        <td>Question 4</td>
+        <td> <div class="rating-buttons">
+    <label>
+      <input type="radio" name="rating" value="poor"/>
+      Poor
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="good"/>
+      Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="very-good"/>
+      Very Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="excellent"/>
+      Excellent
+    </label>
+  </div></td>
+      </tr>
+      <tr>
+        <td>Skill 5</td>
+        <td>Question 5</td>
+        <td> <div class="rating-buttons">
+    <label>
+      <input type="radio" name="rating" value="poor"/>
+      Poor
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="good"/>
+      Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="very-good"/>
+      Very Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="excellent"/>
+      Excellent
+    </label>
+  </div></td>
+      </tr>
+      <tr>
+        <td>Skill 6</td>
+        <td>Question 6</td>
+        <td> <div class="rating-buttons">
+    <label>
+      <input type="radio" name="rating" value="poor"/>
+      Poor
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="good"/>
+      Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="very-good"/>
+      Very Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="excellent"/>
+      Excellent
+    </label>
+  </div></td>
+      </tr>
+      <tr>
+        <td>Skill 7</td>
+        <td>Question 7</td>
+        <td> <div class="rating-buttons">
+    <label>
+      <input type="radio" name="rating" value="poor"/>
+      Poor
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="good"/>
+      Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="very-good"/>
+      Very Good
+    </label>
+
+    <label>
+      <input type="radio" name="rating" value="excellent"/>
+      Excellent
+    </label>
+  </div></td>
+      </tr>
+    </tbody>
+  </table>
+            </Popup>
             {subItem.submenu && renderSubMenu(subItem.submenu, index)}
           </li>
         ))}
       </ul>
     );
   };
-
+  
+  const handleButtonPopup = (index) => {
+    // Set the corresponding item's popup state to true
+    setOpenPopups((prevOpenPopups) => {
+      const newOpenPopups = [...prevOpenPopups];
+      newOpenPopups[index] = true;
+      return newOpenPopups;
+    });
+  };
+  
+  const handlePopupChange = (index, value) => {
+    // Set the corresponding item's popup state to the provided value
+    setOpenPopups((prevOpenPopups) => {
+      const newOpenPopups = [...prevOpenPopups];
+      newOpenPopups[index] = value;
+      return newOpenPopups;
+    });
+  };
+  
   const renderPopup = () => {
     if (selectedSubMenu !== null) {
       return (
-        <div className="popup">
+        <div className="pp">
           <h2>{menuData[selectedSubMenu].label} Details</h2>
         </div>
       );

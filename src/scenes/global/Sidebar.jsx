@@ -171,7 +171,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import StarIcon from '@mui/icons-material/Star';
 import Topbar from "./Topbar";
-import Material from "../matereal/material";
+import mat from "../matereal/mat";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -363,7 +363,7 @@ const Sidebar = () => {
             /> */}
             <Item
               title="Material"
-              to="/material"
+              to="/mat"
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

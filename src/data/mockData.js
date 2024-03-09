@@ -401,7 +401,7 @@ export const mockPieData = [
   {
     "id": "haskell",
     "label": "haskell",
-    "value": 171,
+    "value": 578,
     "color": "hsl(0, 0%, 100%)"
 
   },

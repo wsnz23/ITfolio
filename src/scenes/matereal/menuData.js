@@ -11,13 +11,7 @@ const menuData = [
       submenu: [
         { label: "Sub Menu 1" },
        { label: "Sub Menu 2" },
-        { label: "Sub Menu 1" },
-       { label: "Sub Menu 2" },
-        { label: "Sub Menu 1" },
-       { label: "Sub Menu 2" },
-        { label: "Sub Menu 1" },
-       { label: "Sub Menu 2" },
-      
+    
       
       ],
     },
