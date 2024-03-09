@@ -1,0 +1,63 @@
+.a {
+    display: flex;
+    height: 100vh;
+    width: 150%;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.b {
+    width: 150%;
+}
+
+
+.c{
+    background: #c7c7c736;
+    margin-bottom:0px;
+    padding: 10px 20px;
+    border:solid 1px #c7c7c7;  
+    border-radius: 4px; 
+}
+
+.d{
+   color: #000000ed; 
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   cursor: pointer;
+}
+
+.e{
+    color:#000000ed ;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0,1,0,1);
+    background: white;
+
+}
+
+.e.show{
+    height: auto;
+    max-height: 9999px;
+    transition: all 0.5s cubic-bezier(1,0,1,0); 
+    background: white;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   width: 90%; /* Set your desired width */
+   max-height: 50%;
+    margin: 10px auto; /* Center the card and provide space around it */
+    padding: 10px; /* Add padding as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  }
+
+.popupbutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }

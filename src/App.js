@@ -6,6 +6,8 @@ import Login from "./routes/Login";
 import Contact from "./routes/Contact";
 import SignUp from "./routes/SignUp";
 import Material from "./scenes/matereal/material";
+import Mat from "./scenes/matereal/mat";
+
 // import {Route,Routes} from "react-router-dom";
 // import Topbar from "./scenes/global/Topbar";
 
@@ -66,7 +68,9 @@ function App() {
             {/* <Topbar setIsSidebar={setIsSidebar} /> */}
             <Routes>
              
-              <Route path="/material" element={<Material />} />
+            {/* <Route path="/material" element={<Material />}/> */}
+              <Route path="/Mat" element={<Mat />} />
+
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/" element={<Home />} />
@@ -76,7 +80,11 @@ function App() {
              <Route path="/Contact" element={<Contact />} />
            <Route path="/SignUp" element={<SignUp />} />
            <Route path="/Pie" element={<Pie />} />
+<<<<<<< HEAD
            <Route path="/Userprofile" element={<Team />} />
+=======
+          
+>>>>>>> hamza
 
             </Routes>
           </main>

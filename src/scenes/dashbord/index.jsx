@@ -10,6 +10,7 @@ import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
 import Sidebar from "../global/Sidebar";
 
+
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -51,6 +52,18 @@ const Dashboard = () => {
         gridAutoRows="140px"
         gap="20px"
       >
+          <Box>
+              <IconButton>
+                <DownloadOutlinedIcon
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box>
+          
+          <Box height="250px" m="-20px 0 0 0">
+            <pie isDashboard={true} />
+          </Box>
+        
         {/* ROW 1 */}
         {/* <Box
           gridColumn="span 3"

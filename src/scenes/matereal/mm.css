@@ -27,6 +27,37 @@
   margin-top: 5px;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: rgba(173, 216, 230, 0.2); /* Adjust the RGBA values for the desired shade of blue and transparency */
+  box-shadow: 0 4px 8px rgba(23, 69, 118, 0.83); /* Adjust the RGBA values for the desired blue shadow color and transparency */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #379edec7; /* Adjust the color for the header background */
+  color: rgb(0, 0, 0); /* Set text color for header to contrast with the background */
+}
+
+/* Apply different background colors to alternate columns for transparency effect */
+td:nth-child(even) {
+  background-color:#379ede6f; /* Adjust the RGBA values for the desired shade of blue and transparency */
+}
+
+td:nth-child(odd) {
+  background-color: #379ede43; /* Adjust the RGBA values for the desired shade of blue and transparency */
+}
+
+
+
+
+
 .submenu li {
   border: none;
   border-top: 1px solid #ccc;
@@ -48,4 +79,10 @@
 li.open .submenu {
   display: block;
   content: '\2192'; 
+}
+
+.rating-buttons label {
+  display: inline-block;
+  margin: 0 10px;
+  color: black;
 }
