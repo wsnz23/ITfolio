@@ -9,14 +9,14 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
 import Sidebar from "../global/Sidebar";
-
+import './indexd.css'
 
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box display="flex">
+    <Box className="view"  display="flex">
       <Sidebar />
 
       {/* HEADER */}
@@ -27,9 +27,9 @@ const Dashboard = () => {
    height="20%"
    marginBottom={0}
 >
-  <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+  {/* <Header title="DASHBOARD" subtitle="Welcome to your dashboard" /> */}
 
-  <Box>
+  {/* <Box>
     <Button
       sx={{
         backgroundColor: colors.blueAccent[700],
@@ -42,7 +42,7 @@ const Dashboard = () => {
       <DownloadOutlinedIcon sx={{ mr: "10px" }} />
       Download Reports
     </Button>
-  </Box>
+  </Box> */}
 </Box>
 
       {/* GRID & CHARTS */}
@@ -52,13 +52,13 @@ const Dashboard = () => {
         gridAutoRows="140px"
         gap="20px"
       >
-          <Box>
+          {/* <Box>
               <IconButton>
                 <DownloadOutlinedIcon
                   sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
                 />
               </IconButton>
-            </Box>
+            </Box> */}
           
           <Box height="250px" m="-20px 0 0 0">
             <pie isDashboard={true} />

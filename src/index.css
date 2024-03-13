@@ -72,13 +72,3 @@ border-radius: 20px;
   color: white;
   border-radius: 20px;
 }
-
-.btn:hover{
-  background: rgb(153, 194, 244);
-  color:white;
-  transition: 0.4s;
-  content: '';
-border-color: transparent;
-}
-
-

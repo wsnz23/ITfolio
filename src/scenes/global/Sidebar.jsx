@@ -172,7 +172,9 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import StarIcon from '@mui/icons-material/Star';
 import Topbar from "./Topbar";
 
+import Home from '../../routes/Home';
 
+import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import PollTwoToneIcon from '@mui/icons-material/PollTwoTone';
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
@@ -228,9 +230,9 @@ const Sidebar = () => {
       }}
     >
       
-      <ProSidebar collapsed={isCollapsed}
+      <ProSidebar  collapsed={isCollapsed}
         sx={{
-          height: "20px", // Set the height to 100% for ProSidebar
+          height: "100", // Set the height to 100% for ProSidebar
         }}
       >
         <Menu iconShape="square">
@@ -259,6 +261,8 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
+
+
 
           {/* {!isCollapsed && (
             <Box mb="25px">
@@ -372,6 +376,18 @@ const Sidebar = () => {
 
               to="/mat"
               icon={<MenuBookTwoToneIcon />}
+
+              selected={selected}
+              setSelected={setSelected}
+            />
+<br></br>
+<br></br>
+<br></br>
+            <Item
+              title="Logout"
+
+              to="/"
+              icon={<LogoutTwoToneIcon />}
 
               selected={selected}
               setSelected={setSelected}

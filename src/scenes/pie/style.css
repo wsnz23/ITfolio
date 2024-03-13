@@ -5,7 +5,7 @@
     max-width: 500px;
     width: 100%;
     background: #fff;
-    margin: 0 15px;
+    margin: 20px 166px;
     padding: 10px 20px;
     border-radius: 7px;
 }
@@ -140,7 +140,7 @@
       ;
       /* 'menu footer footer footer footer footer'; */
       gap: 67px;
- 
+      height: 100%;
     padding: 0px;
   }
 
