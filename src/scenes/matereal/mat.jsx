@@ -2,12 +2,16 @@ import { useState,useEffect  } from 'react';
 import './mat.css';
 import Popup from '../../components/Popup.js';
 
-function Mat() {
+function Mat({ skills, questions }) {
   const [selected, setSelected] = useState(null);
   const [popupTrigger, setPopupTrigger] = useState(false);
   const [selectedMaterial, setSelectedMaterial] = useState(null);
+  const [selectedRatings, setSelectedRatings] = useState({});
 
-  
+  const resetState = () => {
+    setPopupTrigger(false);
+    setSelectedRatings({});
+  };
 
   const toggle = (i) => {
     if (selected === i) {
@@ -17,11 +21,21 @@ function Mat() {
   };
 
   const handleButtonClick = (material) => {
-    // Handle the button click action here
-    console.log(`Button clicked for material: ${material.label}`);
     setSelectedMaterial(material);
     setPopupTrigger(true);
   };
+
+  const handleRatingChange = (questionId, subskill, rating) => {
+    setSelectedRatings((prevRatings) => ({
+      ...prevRatings,
+      [`${questionId}_${subskill}`]: rating,
+    }));
+  };
+
+  useEffect(() => {
+    // Reset the state when the component mounts
+    resetState();
+  }, []);
 
   return (
     <div className={`card ${selected === 2 ? 'show' : ''}`}>
@@ -46,7 +60,6 @@ function Mat() {
                       <tr key={j}>
                         <td>{submenuItem.label}</td>
                         <td>
-                          
                           <button onClick={() => handleButtonClick(submenuItem)}>
                             Action
                           </button>
@@ -62,7 +75,7 @@ function Mat() {
       </div>
 
       {popupTrigger && selectedMaterial && (
-        <Popup trigger={popupTrigger} setTrigger={setPopupTrigger}>
+        <Popup trigger={popupTrigger} setTrigger={() => { setPopupTrigger(false); resetState(); }}>
           <div>
             <h3>{selectedMaterial.label} - Skills</h3>
             <table>
@@ -74,42 +87,64 @@ function Mat() {
                 </tr>
               </thead>
               <tbody>
-                {selectedMaterial.skills&&selectedMaterial.question && selectedMaterial.skills.map((subskill, index) => (
+                {selectedMaterial.skills && selectedMaterial.question && selectedMaterial.skills.map((subskill, index) => (
                   <tr key={index}>
                     <td>{subskill}</td>
                     <td>{selectedMaterial.question[index]}</td>
-                    <td> 
-          <div class="rating-buttons">
-    <label>
-      <input type="radio" name="rating1" value="poor"/>
-      Poor
-    </label>
+                    <td>
+                      <div className="rating-buttons">
+                        <label>
+                          <input
+                            type="radio"
+                            name={`rating_${index}_${subskill}`}
+                            value="poor"
+                            checked={selectedRatings[`${index}_${subskill}`] === 'poor'}
+                            onChange={() => handleRatingChange(index, subskill, 'poor')}
+                          />
+                          Poor
+                        </label>
 
-    <label>
-      <input type="radio" name="rating2" value="good"/>
-      Good
-    </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name={`rating_${index}_${subskill}`}
+                            value="good"
+                            checked={selectedRatings[`${index}_${subskill}`] === 'good'}
+                            onChange={() => handleRatingChange(index, subskill, 'good')}
+                          />
+                          Good
+                        </label>
 
-    <label>
-      <input type="radio" name="rating3" value="very-good"/>
-      Very Good
-    </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name={`rating_${index}_${subskill}`}
+                            value="very-good"
+                            checked={selectedRatings[`${index}_${subskill}`] === 'very-good'}
+                            onChange={() => handleRatingChange(index, subskill, 'very-good')}
+                          />
+                          Very Good
+                        </label>
 
-    <label>
-      <input type="radio" name="rating4" value="excellent"/>
-      Excellent
-    </label>
-  </div>
-</td>
+                        <label>
+                          <input
+                            type="radio"
+                            name={`rating_${index}_${subskill}`}
+                            value="excellent"
+                            checked={selectedRatings[`${index}_${subskill}`] === 'excellent'}
+                            onChange={() => handleRatingChange(index, subskill, 'excellent')}
+                          />
+                          Excellent
+                        </label>
+                      </div>
+                    </td>
                   </tr>
                 ))}
-                
               </tbody>
-              
             </table>
-           <div className='popupbutton'>
-    <button>Submit</button>
-</div>
+            <div className='popupbutton'>
+              <button>Submit</button>
+            </div>
           </div>
         </Popup>
       )}

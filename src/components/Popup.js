@@ -1,31 +1,86 @@
-import React from 'react'
-import "./popup.css"
-
-import  { useState, useRef } from 'react';
-
-
-
+import React, { useState, useRef } from 'react';
+import "./popup.css";
 
 function Popup(props) {
-  
-  return (props.trigger)?(
-    <div className='p'>
-      <div className='popup-inner'>
-      <div className='thebutttons'>
-        <button className='close-btn' style={{ border: 'none', background: 'none', padding: '0', cursor: 'pointer', fontSize: '17px' }}>
-    <i className="fa fa-window-maximize"></i>
-  </button>
-  <button className='close-btn' onClick={() => props.setTrigger(false)} style={{ border: 'none', background: 'none', padding: '0', cursor: 'pointer', fontSize: '18px'}}>
-    <i className="fa fa-close"></i>
-  </button>
- 
+  const [position, setPosition] = useState({ x: (window.innerWidth - 600) / 2, y: (window.innerHeight - 400) / 2 });
+  const [originalSize, setOriginalSize] = useState({ width: 600, height: 400 });
+  const innerContentRef = useRef(null);
+  const [isMaximized, setIsMaximized] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [mousePosition, setMousePosition] = useState(null);
 
-</div>
-<br/>
-{props.children}
+  const handleMaximize = () => {
+    setIsMaximized(!isMaximized);
+    if (!isMaximized) {
+      setOriginalSize({ width: innerContentRef.current.offsetWidth, height: innerContentRef.current.offsetHeight });
+      setPosition({ x: 0, y: 0 });
+    } else {
+      setPosition({ x: (window.innerWidth - originalSize.width) / 2, y: (window.innerHeight - originalSize.height) / 2 });
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    const offsetX = e.clientX - position.x;
+    const offsetY = e.clientY - position.y;
+    setMousePosition({ offsetX, offsetY });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (isDragging) {
+      const newX = e.clientX - mousePosition.offsetX;
+      const newY = e.clientY - mousePosition.offsetY;
+      setPosition({ x: newX, y: newY });
+    }
+  };
+
+  return props.trigger ? (
+    <div className={`p ${isMaximized ? 'maximized' : ''}`}>
+      <div
+        className='popup-inner'
+        style={{ position: 'absolute', top: position.y, left: position.x, width: isMaximized ? '100vw' : originalSize.width, height: isMaximized ? '100vh' : originalSize.height }}
+        ref={innerContentRef}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+      >
+        <div className='thebutttons'>
+          <button
+            className='close-btn'
+            style={{
+              border: 'none',
+              background: 'none',
+              padding: '0',
+              cursor: 'pointer',
+              fontSize: '17px'
+            }}
+            onClick={handleMaximize}
+          >
+            <i className={isMaximized ? 'fa fa-window-restore' : 'fa fa-window-maximize'}></i>
+          </button>
+          <button
+            className='max-btn'
+            onClick={() => props.setTrigger(false)}
+            style={{
+              border: 'none',
+              background: 'none',
+              padding: '0',
+              cursor: 'pointer',
+              fontSize: '20px'
+            }}
+          >
+            <i className="fa fa-close"></i>
+          </button>
+        </div>
+        <br />
+        {props.children}
       </div>
     </div>
-  ):"";
+  ) : null;
 }
 
-export default Popup
+export default Popup;

@@ -1,32 +1,99 @@
 .p {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; /* Adjust the value based on your needs to ensure it's higher than other elements */
-  }
-  
-  .popup-inner {
-    position: relative;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 100%;
-    z-index: 1000; /* Make sure this value is higher than the z-index of the overlay */
-  }
-  
-  .close-btn {
-    position: relative;
-    top:5px;
-    right: -530px; /* Adjust this value to move the buttons from left to right */
-    display: inline-flex;
-    cursor: pointer;
-    justify-content: space-between;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Adjust the value based on your needs to ensure it's higher than other elements */
+}
+
+.popup-inner {
+  position: relative;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 50%; /* Adjust the maximum width as needed */
+  max-height: 60%; /* Adjust the maximum height as needed */
+  overflow: auto; /* Add overflow to enable scrolling if content exceeds dimensions */
+  z-index: 1000; /* Make sure this value is higher than the z-index of the overlay */
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  cursor: pointer;
+}
+
+.max-btn {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.p.maximized .popup-inner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,- 50%);
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0; /* Remove border-radius when maximized */
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: absolute;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+  cursor: grab;
+}
+
+.modal-body {
+  padding: 10px 16px;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ff9999;
+}
