@@ -178,6 +178,7 @@ import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import PollTwoToneIcon from '@mui/icons-material/PollTwoTone';
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 
 import mat from "../matereal/mat";
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -381,8 +382,19 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 <br></br>
-<br></br>
-<br></br>
+
+           
+
+            <Item
+              title="Settings"
+
+              to="/Settings"
+              icon={<SettingsTwoToneIcon />}
+
+              selected={selected}
+              setSelected={setSelected}
+            />
+             <Topbar />
             <Item
               title="Logout"
 
@@ -392,6 +404,8 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+
+           
             
             <eslint-disable-next-line>
             {/* <Typography

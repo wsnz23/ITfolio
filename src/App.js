@@ -44,7 +44,7 @@ import Mat from "./scenes/matereal/mat";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
-
+import Settings from "./scenes/settings";
 import Dashboard from "../src/scenes/dashbord";
 import Team from "./scenes/Userprofile";
 import Invoices from "./scenes/invoices";
@@ -82,6 +82,7 @@ function App() {
            <Route path="/Pie" element={<Pie />} />
 
            <Route path="/Userprofile" element={<Team />} />
+           <Route path="/Settings" element={<Settings />} />
 
           
 
