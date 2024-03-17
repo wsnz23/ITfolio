@@ -4,6 +4,9 @@
     padding: 4rem 0 2rem 0;
 }
 
+.work-container{
+    background: black;
+}
 .project-container{
     max-width: 1140px;
     margin: auto;
@@ -16,9 +19,9 @@ padding-bottom: 5rem;
 .project-card{
     background:transparent;
     padding: 1.2rem 1rem;
-    border: 2px solid ;
+    border: 2px solid transparent;
     backdrop-filter: blur(5px);
-    box-shadow: rgba(72, 135, 202, 0.652) 0 0 90px 33px;
+    box-shadow: rgba(72, 135, 202, 0.652) 0 0 40px 20px;
 }
 
 .project-card img{
