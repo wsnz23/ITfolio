@@ -1,6 +1,7 @@
 import { useState,useEffect  } from 'react';
 import './mat.css';
 import Popup from '../../components/Popup.js';
+import Sidebar from '../global/Sidebar.jsx';
 
 function Mat({ skills, questions }) {
   const [selected, setSelected] = useState(null);
@@ -38,7 +39,10 @@ function Mat({ skills, questions }) {
   }, []);
 
   return (
+   <div className="view"  display="flex" >
+    <Sidebar />
     <div className={`card ${selected === 2 ? 'show' : ''}`}>
+      
       <div className='a'>
         <div className='b'>
           {data.map((item, i) => (
@@ -148,6 +152,7 @@ function Mat({ skills, questions }) {
           </div>
         </Popup>
       )}
+    </div>
     </div>
   );
 }
