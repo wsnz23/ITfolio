@@ -1,6 +1,7 @@
 import React from 'react';
 import './LoginForm.css';
 import '../routes/SignUp.js';
+import './forgetpass.jsx';
  // eslint-disable-next-line
 import {FaUser,FaLock} from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -22,8 +23,7 @@ const LoginForm = () => {
         <i className='bx bxs-lock-alt' ></i>
       </div>
       <div className="remember-forgot">
-        <label><input type="checkbox"/>Remember Me</label>
-        <Link href="#">Forgot Password</Link>
+        <Link to='/forgetpass'>Forget Password?</Link>
       </div>
       <Link to="/Dashboard">
             <button type="submit" className="btn">

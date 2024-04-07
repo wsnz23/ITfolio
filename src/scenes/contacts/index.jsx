@@ -1,102 +1,96 @@
-import { Box } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+import React, { useState } from "react";
 import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
+import "./workexperince.css";
+import Sidebar from '../global/Sidebar.jsx';
+import Topbar from '../global/Topbar.jsx';
 
 const Contacts = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  const [workHistory, setWorkHistory] = useState([
+    { company: "", position: "", startDate: "", endDate: "" },
+  ]);
 
-  const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
-    },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "zipCode",
-      headerName: "Zip Code",
-      flex: 1,
-    },
-  ];
+  const handleAddRow = () => {
+    setWorkHistory([...workHistory, { company: "", position: "", startDate: "", endDate: "" }]);
+  };
+
+  const handleChange = (index, event) => {
+    const { name, value } = event.target;
+    const list = [...workHistory];
+    list[index][name] = value;
+    setWorkHistory(list);
+  };
+
+  const handleRemoveRow = (index) => {
+    const list = [...workHistory];
+    list.splice(index, 1);
+    setWorkHistory(list);
+  };
 
   return (
-    <Box m="20px">
-      <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
-      />
-      <Box
-        m="40px 0 0 0"
-        height="75vh"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${colors.grey[100]} !important`,
-          },
-        }}
-      >
-        <DataGrid
-          rows={mockDataContacts}
-          columns={columns}
-          components={{ Toolbar: GridToolbar }}
-        />
-      </Box>
-    </Box>
+    <div className="view" display="flex">
+      <Sidebar />
+      <Topbar />
+      <div className="work-container">
+        <h2>Work History</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Position</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workHistory.map((item, index) => (
+              <tr key={index}>
+                <td>
+                  <input
+                    type="text"
+                    name="company"
+                    value={item.company}
+                    onChange={(e) => handleChange(index, e)}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="position"
+                    value={item.position}
+                    onChange={(e) => handleChange(index, e)}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="date"
+                    name="startDate"
+                    value={item.startDate}
+                    onChange={(e) => handleChange(index, e)}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="date"
+                    name="endDate"
+                    value={item.endDate}
+                    onChange={(e) => handleChange(index, e)}
+                  />
+                </td>
+                <td >
+                  {workHistory.length - 1 === index && (
+                    <button className="workbutton" onClick={handleAddRow }>Add</button>
+                  )}
+                  {workHistory.length !== 1 && (
+                    <button  className="workbutton" onClick={() => handleRemoveRow(index)}>Remove</button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 

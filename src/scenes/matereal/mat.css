@@ -1,16 +1,13 @@
 .a {
     display: flex;
-    height: 100vh;
     width: 150%;
     justify-content: center;
     align-items: center;
-  
 }
 
 .b {
     width: 150%;
 }
-
 
 .c{
     background: #c7c7c736;
@@ -18,14 +15,27 @@
     padding: 10px 20px;
     border:solid 1px #c7c7c7;  
     border-radius: 4px; 
+    cursor: pointer;
+    transition:4ms;
+}
+
+.c .e {
+    cursor: default;
+}
+
+.c .e button {
+  cursor: pointer;
 }
 
 .d{
-   color: #000000ed; 
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
    cursor: pointer;
+}
+.poph3{
+  color: black;
 }
 
 .e{
@@ -34,7 +44,6 @@
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0,1,0,1);
     background: white;
-
 }
 
 .e.show{
@@ -48,16 +57,62 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   width: 90%; /* Set your desired width */
-   max-height: 50%;
-    margin: 10px auto; /* Center the card and provide space around it */
-    padding: 10px; /* Add padding as needed */
+    width: 90%; /* Set your desired width */
+    height:fit-content;
+    margin: 80px auto; /* Center the card and provide space around it */
+    padding: 50px 30px; /* Add padding as needed */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    
   }
 
-.popupbutton{
+  .popupbutton {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+  
   }
+
+  .buttonmat{
+      background-color: #1f2a40;
+    border: 1px solid #3498db42;
+    border-radius: 20px;
+    color: white;
+    width: 60px;
+    cursor: pointer;
+    height: 25px;
+  }
+
+  .buttonmat:hover {
+    background-color: #1b6698; 
+    color: black;
+    
+  }
+
+  .MuiBox-root {
+    z-index: 999;
+  }
+
+  .c:has(.e) {
+    padding-bottom: 20px;
+  }
+
+  .d span {
+    font-size: 22px;
+  }
+
+ .insidepopup{
+  background-color: #1f2a40;
+  border: 1px solid #3498db42;
+  border-radius: 20px;
+  color: white;
+  width: 60px;
+  cursor: pointer;
+ }
+
+ .view{
+  display: flex;
+
+}
+ 
+

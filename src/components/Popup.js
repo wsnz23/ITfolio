@@ -42,11 +42,18 @@ function Popup(props) {
     <div className={`p ${isMaximized ? 'maximized' : ''}`}>
       <div
         className='popup-inner'
-        style={{ position: 'absolute', top: position.y, left: position.x, width: isMaximized ? '100vw' : originalSize.width, height: isMaximized ? '100vh' : originalSize.height }}
+        style={{ 
+          position: 'absolute', 
+          top: position.y, 
+          left: position.x, 
+          width: isMaximized ? '100vw' : originalSize.width + 300, 
+          height: isMaximized ? '100vh' : originalSize.height + 300,
+          cursor: isMaximized ? 'auto' : 'move'  // Change cursor to "move" if not maximized
+        }}
         ref={innerContentRef}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
+        onMouseDown={!isMaximized ? handleMouseDown : undefined} // Allow dragging only when not maximized
+        onMouseUp={!isMaximized ? handleMouseUp : undefined}
+        onMouseMove={!isMaximized ? handleMouseMove : undefined}
       >
         <div className='thebutttons'>
           <button

@@ -1,13 +1,8 @@
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
-import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import SearchIcon from "@mui/icons-material/Search";
 
 const Topbar = () => {
   const theme = useTheme();
@@ -15,24 +10,23 @@ const Topbar = () => {
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <Box display="flex" justifyContent="space-between" p={2}>
-      {/* SEARCH BAR
+    <Box
+      position="absolute"
+      top={0}
+      right={0}
+      width="50%"
+      zIndex={1000}
+      pointerEvents="none" // Prevents the top bar from capturing mouse events
+    >
+      {/* Transparent background */}
       <Box
+        bgcolor="transparent"
+        pointerEvents="auto" // Allows elements inside the top bar to capture mouse events
         display="flex"
-        backgroundColor={colors.primary[400]}
-        borderRadius="3px"
+        justifyContent="flex-end" // Aligns the icons to the right
+        p={2}
       >
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
-        <IconButton type="button" sx={{ p: 1 }}>
-          <SearchIcon />
-        </IconButton>
-      </Box> */}
-
-      
-
-      {/* ICONS */}
-      <Box display="flex">
-       
+        {/* Icons */}
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
@@ -40,15 +34,7 @@ const Topbar = () => {
             <LightModeOutlinedIcon />
           )}
         </IconButton>
-        {/* <IconButton>
-          <NotificationsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <SettingsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <PersonOutlinedIcon />
-        </IconButton> */}
+        {/* Add other icons here if needed */}
       </Box>
     </Box>
   );

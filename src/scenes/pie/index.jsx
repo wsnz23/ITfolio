@@ -29,6 +29,8 @@ import React from "react";
 import './style.css';
 import { Box } from "@mui/system";
 import Sidebar from "../global/Sidebar";
+import Topbar from "../global/Topbar";
+
 
 const skillsData = [
   { title: "HTML", percentage: 95, color: "html" },
@@ -40,17 +42,14 @@ const skillsData = [
 ];
 
 function SkillsBar() {
-  return (
-    <Box className="view" >
-      <Sidebar />
-    <Box className="dis">
-     
-    <div className="conChart">
-      <h1 className="title-text">React Progress Bar</h1>
-
+  return ( <div className="view"  display="flex" >
+  <Sidebar />
+    <Topbar />
+    <div className="chart-container">
+    <h2 className="settings-title">Skills acquired from university subjects</h2>
       {skillsData.map((skill, index) => (
         <div className="skill-box" key={index}>
-          <span className="title">{skill.title}</span>
+        <h3> {skill.title} </h3>
           <div className="skill-bar">
             <span className={`skill-per ${skill.color}`}>
               <span className="tooltip">{`${skill.percentage}%`}</span>
@@ -58,8 +57,8 @@ function SkillsBar() {
           </div>
         </div>
       ))}
-    </div>
-    </Box></Box>
+   </div>
+   </div>
   );
 }
 

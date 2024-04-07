@@ -21,19 +21,20 @@ body,
   width: 10px;
 }
 
-/* Track */
+/* Track 
 ::-webkit-scrollbar-track {
   background: #e0e0e0;
-}
+}*/
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background:linear-gradient(transparent,#808080);
+  border-radius: 6px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: linear-gradient(transparent,#4f4f4f);
 }
 
 *{
@@ -45,8 +46,8 @@ body,
 
 
 
-h1,h4,p,a{
-  color: white;
+h1,h4,a,p :not(.MuiTypography-root){
+  color:white;
   text-decoration: none;
 }
 
@@ -71,4 +72,12 @@ border-radius: 20px;
   background: transparent;
   color: white;
   border-radius: 20px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  text-transform: capitalize;
+}
+
+span {
+  color: inherit;
 }

@@ -40,7 +40,6 @@ import Mat from "./scenes/matereal/mat";
 // }
 
 // export default App;
-
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
@@ -48,8 +47,13 @@ import Settings from "./scenes/settings";
 import Dashboard from "../src/scenes/dashbord";
 import Team from "./scenes/Userprofile";
 import Invoices from "./scenes/invoices";
+import Awards from "./scenes/Awards";
+import Education from "./scenes/Education";
+import Cv from "./scenes/Cv/index";
 import Contacts from "./scenes/contacts";
 import Pie from "./scenes/pie";
+import Forgetpass from "./components/forgetpass";
+import ResetPassword from "./components/ResetPassword";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Sidebar from "./scenes/global/Sidebar";
@@ -73,6 +77,8 @@ function App() {
 
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
+              <Route path="/Awards" element={<Awards />} />
+              <Route path="/Cv" element={<Cv/>} />
               <Route path="/" element={<Home />} />
              <Route path="/About" element={<About />} />
              <Route path="/Login" element={<Login />} />
@@ -80,11 +86,11 @@ function App() {
              <Route path="/Contact" element={<Contact />} />
            <Route path="/SignUp" element={<SignUp />} />
            <Route path="/Pie" element={<Pie />} />
-
+           <Route path="/Education" element={<Education />} />
            <Route path="/Userprofile" element={<Team />} />
            <Route path="/Settings" element={<Settings />} />
-
-          
+           <Route path="/forgetpass" element={<Forgetpass />} />
+           <Route path="/ResetPassword" element={<ResetPassword />} />
 
 
             </Routes>

@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Adjust the value based on your needs to ensure it's higher than other elements */
+  z-index: 1000; /* Adjust the value based on your needs to ensure it's higher than other elements */
 }
 
 .popup-inner {
@@ -18,9 +18,10 @@
   border-radius: 10px;
   width: 100%;
   max-width: 50%; /* Adjust the maximum width as needed */
-  max-height: 60%; /* Adjust the maximum height as needed */
+  max-height: 62%; /* Adjust the maximum height as needed */
   overflow: auto; /* Add overflow to enable scrolling if content exceeds dimensions */
   z-index: 1000; /* Make sure this value is higher than the z-index of the overlay */
+  margin-bottom: 2800px;
 }
 
 .close-btn {

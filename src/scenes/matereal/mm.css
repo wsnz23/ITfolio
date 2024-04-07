@@ -30,7 +30,7 @@
 table {
   border-collapse: collapse;
   width: 100%;
-  background-color: rgba(173, 216, 230, 0.2); /* Adjust the RGBA values for the desired shade of blue and transparency */
+  background-color: rgba(255, 255, 255, 0.2); /* Adjust the RGBA values for the desired shade of blue and transparency */
   box-shadow: 0 4px 8px rgba(23, 69, 118, 0.83); /* Adjust the RGBA values for the desired blue shadow color and transparency */
 }
 
@@ -38,25 +38,29 @@ th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+  text-transform: capitalize;
+  color: black;
 }
 
+
 th {
-  background-color: #379edec7; /* Adjust the color for the header background */
+  background-color: #c7c7c736;; /* Adjust the color for the header background */
   color: rgb(0, 0, 0); /* Set text color for header to contrast with the background */
 }
 
 /* Apply different background colors to alternate columns for transparency effect */
-td:nth-child(even) {
-  background-color:#379ede6f; /* Adjust the RGBA values for the desired shade of blue and transparency */
+tr:nth-child(even) {
+  background-color: #c7c7c780; /* Adjust the RGBA values for the desired shade of blue and transparency */
 }
 
-td:nth-child(odd) {
-  background-color: #379ede43; /* Adjust the RGBA values for the desired shade of blue and transparency */
+tr:nth-child(odd) {
+  background-color: #ffffff43; /* Adjust the RGBA values for the desired shade of blue and transparency */
 }
 
-
-
-
+.tdpop{
+  width:200px;
+  height: 50px;
+  }
 
 .submenu li {
   border: none;

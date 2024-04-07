@@ -26,7 +26,7 @@ const Footer = () => {
 
 <div className="right">
 <h4>About the website</h4>
-<p>This is Wasan Subaihi , Lara Al-Qaisi , Shadan Ekedat
+<p className="footerp">This is Wasan Subaihi , Lara Al-Qaisi , Shadan Ekedat
     and Hamza Al-Manaseer the developers of this website let us know if you have any recommendations.
 </p>
 

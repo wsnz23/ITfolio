@@ -1,82 +1,55 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import { mockDataInvoices } from "../../data/mockData";
-import Header from "../../components/Header";
+import React, { useState } from "react";
+import "./intrest.css";
+import Sidebar from '../global/Sidebar.jsx';
+import Topbar from '../global/Topbar.jsx';
 
 const Invoices = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  const columns = [
-    { field: "id", headerName: "ID" },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "cost",
-      headerName: "Cost",
-      flex: 1,
-      renderCell: (params) => (
-        <Typography color={colors.greenAccent[500]}>
-          ${params.row.cost}
-        </Typography>
-      ),
-    },
-    {
-      field: "date",
-      headerName: "Date",
-      flex: 1,
-    },
-  ];
+  const [interest, setInterest] = useState("");
+  const [interestsList, setInterestsList] = useState([]);
+
+  const handleInputChange = (event) => {
+    setInterest(event.target.value);
+  };
+
+  const handleAddInterest = () => {
+    if (interest.trim() !== "") {
+      setInterestsList([...interestsList, interest]);
+      setInterest(""); // Clear the input box after adding the interest
+    }
+  };
+
+  const handleDeleteInterest = (index) => {
+    const updatedInterests = [...interestsList];
+    updatedInterests.splice(index, 1);
+    setInterestsList(updatedInterests);
+  };
 
   return (
-    <Box m="20px">
-      <Header title="INVOICES" subtitle="List of Invoice Balances" />
-      <Box
-        m="40px 0 0 0"
-        height="75vh"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
-      </Box>
-    </Box>
+    <div className="view" display="flex">
+      <Sidebar />
+      <Topbar />
+      <div className="intrest-container">
+        <h2 className="settings-title">Interest</h2>
+        <input
+          type="text"
+          placeholder="  Enter your interest"
+          value={interest}
+          onChange={handleInputChange}
+          className="interset-input"
+        />
+        <button className="intersetbutton" onClick={handleAddInterest}>Add Interest</button>
+        <br /><br />
+        <ul className="interests-list">
+          {interestsList.map((item, index) => (
+            <li key={index}>
+              {item}
+              <button className="interestdel" onClick={() => handleDeleteInterest(index)}>Delete</button>
+           <br></br> <br></br></li>
+            
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 

@@ -74,16 +74,16 @@ export const tokens = (mode) => ({
           900: "#e0e0e0",
         },
         primary: {
-          100: "#040509",
-          200: "#080b12",
-          300: "#0c101b",
-          400: "#f2f0f0", // manually changed
-          500: "#141b2d",
-          600: "#1F2A40",
-          700: "#727681",
-          800: "#a1a4ab",
-          900: "#d0d1d5",
-        },
+          100: "#E3F3FC",
+          200: "#BBE4FC",
+          300: "#93D4FB",
+          400: "#6BC5FA",
+          500: "#43B5FA",
+          600: "#2D99D2",
+          700: "#2175A6",
+          800: "#164F79",
+          900: "#0B2A4D"
+      },      
         greenAccent: {
           100: "#0f2922",
           200: "#1e5245",
@@ -188,7 +188,15 @@ export const themeSettings = (mode) => {
       h6: {
         fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
         fontSize: 14,
-      },
+      }, span: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 14,
+      }, title: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 14,
+      }, p: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 14,}
     },
   };
 };

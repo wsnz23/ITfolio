@@ -10,6 +10,9 @@ import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
 import Sidebar from "../global/Sidebar";
 import './indexd.css'
+import Topbar from '../global/Topbar';
+import Pie from '../pie/index';
+
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -17,8 +20,7 @@ const Dashboard = () => {
 
   return (
     <Box className="view"  display="flex">
-      <Sidebar />
-
+<Pie/>
       {/* HEADER */}
       <Box
    display="flex"

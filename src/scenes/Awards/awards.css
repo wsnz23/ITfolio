@@ -1,0 +1,73 @@
+.awardbutton{
+    background-color: #1f2a40;
+  border: 1px solid #3498db42;
+  border-radius: 20px;
+  color: white;
+  width: 70px;
+  cursor: pointer;
+  height: 25px;
+  margin: 20px;
+  margin-left: 200px;
+}
+
+.awardbutton:hover {
+  background-color: #1b6698; 
+  color: black;
+  
+}
+.awardbutt{
+    background-color: #1f2a40;
+  border: 1px solid #3498db42;
+  border-radius: 20px;
+  color: white;
+  width: 70px;
+  cursor: pointer;
+  height: 25px;margin: 20px;
+  margin-left: 240px;
+  
+}
+
+.awardbutt:hover {
+  background-color: #1b6698; 
+  color: black;
+  
+}
+
+
+.delaward{
+    background-color: #1f2a40;
+    border: 1px solid #3498db42;
+    border-radius: 20px;
+    color: white;
+    width: 70px;
+    cursor: pointer;
+    height: 25px;
+}
+
+.delaward:hover {
+    background-color: #1b6698; 
+    color: black;
+    
+  }
+
+  .skill-container{
+      width: fit-content;
+      margin: 80px auto; /* Adjust top margin to center vertically */
+      padding: 20px;
+      border-radius: 5px;
+      height: fit-content;
+      background-color: rgba(245, 245, 245, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow */
+    
+  }
+
+  .award-input
+  {
+    border-radius: 22px;
+    border:solid 1px;
+    height: 30px;
+   
+    width:200px
+  }

@@ -19,6 +19,11 @@ const LoginForm = () => {
     <form action="">
       <h1>SignUp</h1>  
       <div className="input-box">
+        <input type="text" placeholder="Full Name" required />
+        <i className='bx bxs-alt' ></i>
+      </div>
+
+      <div className="input-box">
         <input type="email" placeholder="Email" required />
         <i className='bx bxs-alt-email' ></i>
       </div>
@@ -34,7 +39,7 @@ const LoginForm = () => {
       </div>
 
       <div className="dropdown">
-      <label htmlFor="myDropdown">Select your Major:</label>
+      <label htmlFor="myDropdown" className='label-signup'>Select your Major:</label>
       <select id="myDropdown" value={selectedValue} onChange={handleDropdownChange}>
         <option value="">Choose an option</option>
         <option value="option1">CS</option>

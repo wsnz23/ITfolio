@@ -1,458 +1,29 @@
-// import { Box, Typography, useTheme } from "@mui/material";
-// import { DataGrid } from "@mui/x-data-grid";
-// import { tokens } from "../../theme";
-// import { mockDataInvoices } from "../../data/mockData";
-// import Header from "../../components/Header";
-
-// const Invoices = () => {
-//   const theme = useTheme();
-//   const colors = tokens(theme.palette.mode);
-//   const columns = [
-//     { field: "id", headerName: "ID" },
-//     {
-//       field: "name",
-//       headerName: "Name",
-//       flex: 1,
-//       cellClassName: "name-column--cell",
-//     },
-//     {
-//       field: "phone",
-//       headerName: "Phone Number",
-//       flex: 1,
-//     },
-//     {
-//       field: "email",
-//       headerName: "Email",
-//       flex: 1,
-//     },
-//     {
-//       field: "cost",
-//       headerName: "Cost",
-//       flex: 1,
-//       renderCell: (params) => (
-//         <Typography color={colors.greenAccent[500]}>
-//           ${params.row.cost}
-//         </Typography>
-//       ),
-//     },
-//     {
-//       field: "date",
-//       headerName: "Date",
-//       flex: 1,
-//     },
-//   ];
-
-//   return (
-//     <Box m="20px">
-//       <Header title="INVOICES" subtitle="List of Invoice Balances" />
-//       <Box
-//         m="40px 0 0 0"
-//         height="75vh"
-//         sx={{
-//           "& .MuiDataGrid-root": {
-//             border: "none",
-//           },
-//           "& .MuiDataGrid-cell": {
-//             borderBottom: "none",
-//           },
-//           "& .name-column--cell": {
-//             color: colors.greenAccent[300],
-//           },
-//           "& .MuiDataGrid-columnHeaders": {
-//             backgroundColor: colors.blueAccent[700],
-//             borderBottom: "none",
-//           },
-//           "& .MuiDataGrid-virtualScroller": {
-//             backgroundColor: colors.primary[400],
-//           },
-//           "& .MuiDataGrid-footerContainer": {
-//             borderTop: "none",
-//             backgroundColor: colors.blueAccent[700],
-//           },
-//           "& .MuiCheckbox-root": {
-//             color: `${colors.greenAccent[200]} !important`,
-//           },
-//         }}
-//       >
-//         <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
-//       </Box>
-//     </Box>
-//   );
-// };
-
-// export default Invoices;
-
-
-// import React, { useState } from "react";
-// import { Button } from "react-bootstrap";
-// import Header from "../../components/Header";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-
-// const Profile = () => {
-//   const [editableName, setEditableName] = useState("John Doe");
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   const profileInfo = {
-//     phoneNumber: "123-456-7890",
-//     email: "john.doe@example.com",
-//     address: "123 Main Street, Cityville",
-//   };
-
-//   const handleEditName = () => {
-//     setIsEditing(true);
-//   };
-
-//   const handleSaveName = () => {
-//     setIsEditing(false);
-//     // You can add logic here to save the updated name to your backend or state management.
-//   };
-
-//   return (
-//     <Container>
-//       <Header title="PROFILE" subtitle="User Information" />
-//       <Row className="mt-4">
-//         <Col>
-//           <div className="profile-info">
-//             <div className="info-item">
-//               <label className="info-label">Name:</label>
-//               {isEditing ? (
-//                 <input
-//                   type="text"
-//                   value={editableName}
-//                   onChange={(e) => setEditableName(e.target.value)}
-//                 />
-//               ) : (
-//                 <span className="info-value">{editableName}</span>
-//               )}
-//               {isEditing ? (
-//                 <Button
-//                   variant="outline-success"
-//                   onClick={handleSaveName}
-//                 >
-//                   Save
-//                 </Button>
-//               ) : (
-//                 <Button
-//                   variant="outline-primary"
-//                   onClick={handleEditName}
-//                 >
-//                   Edit
-//                 </Button>
-//               )}
-//             </div>
-//             <div className="info-item">
-//               <label className="info-label">Phone Number:</label>
-//               <span className="info-value">{profileInfo.phoneNumber}</span>
-//             </div>
-//             <div className="info-item">
-//               <label className="info-label">Email:</label>
-//               <span className="info-value">{profileInfo.email}</span>
-//             </div>
-//             <div className="info-item">
-//               <label className="info-label">Address:</label>
-//               <span className="info-value">{profileInfo.address}</span>
-//             </div>
-//           </div>
-//         </Col>
-//       </Row>
-//     </Container>
-//   );
-// };
-
-// export default Profile;
-
-
-// import React, { useState } from "react";
-// import { Button } from "react-bootstrap";
-// import Header from "../../components/Header";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-
-// const Profile = () => {
-//   const [editableInfo, setEditableInfo] = useState({
-//     name: "John Doe",
-//     phoneNumber: "123-456-7890",
-//     email: "john.doe@example.com",
-//     address: "123 Main Street, Cityville",
-//   });
-
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   const handleEdit = () => {
-//     setIsEditing(true);
-//   };
-
-//   const handleSave = () => {
-//     setIsEditing(false);
-//     // You can add logic here to save the updated info to your backend or state management.
-//   };
-
-//   const renderInfoItem = (label, valueKey) => (
-//     <div className="info-item">
-//       <label className="info-label">{label}:</label>
-//       {isEditing ? (
-//         <input
-//           type="text"
-//           value={editableInfo[valueKey]}
-//           onChange={(e) =>
-//             setEditableInfo((prevInfo) => ({
-//               ...prevInfo,
-//               [valueKey]: e.target.value,
-//             }))
-//           }
-//         />
-//       ) : (
-//         <span className="info-value">{editableInfo[valueKey]}</span>
-//       )}
-//     </div>
-//   );
-
-//   return (
-//     <Container>
-//       <Header title="PROFILE" subtitle="User Information" />
-//       <Row className="mt-4">
-//         <Col>
-//           <div className="profile-info">
-//             {renderInfoItem("Name", "name")}
-//             {renderInfoItem("Phone Number", "phoneNumber")}
-//             {renderInfoItem("Email", "email")}
-//             {renderInfoItem("Address", "address")}
-//             {isEditing ? (
-//               <Button
-//                 variant="outline-success"
-//                 onClick={handleSave}
-//               >
-//                 Save
-//               </Button>
-//             ) : (
-//               <Button
-//                 variant="outline-primary"
-//                 onClick={handleEdit}
-//               >
-//                 Edit
-//               </Button>
-//             )}
-//           </div>
-//         </Col>
-//       </Row>
-//     </Container>
-//   );
-// };
-
-// export default Profile;
-
-// Import React and necessary components
-// import React, { useState } from "react";
-// import { Button } from "react-bootstrap";
-// import Header from "../../components/Header";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-// import { Box, IconButton, Typography, useTheme } from "@mui/material";
-
-// // Import the CSS file
-// import "./profile.css";
-// import Topbar from "../global/Topbar";
-// import Sidebar from "../global/Sidebar";
-
-// const Profile = () => {
-//   const [editableInfo, setEditableInfo] = useState({
-//     name: "John Doe",
-//     phoneNumber: "123-456-7890",
-//     email: "john.doe@example.com",
-//     address: "123 Main Street, Cityville",
-//   });
-
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   const handleEdit = () => {
-//     setIsEditing(true);
-//   };
-
-//   const handleSave = () => {
-//     setIsEditing(false);
-//     // You can add logic here to save the updated info to your backend or state management.
-//   };
-
-//   const renderInfoItem = (label, valueKey) => (
-//     <div className="info-item">
-//       <label className="info-label">{label}:</label>
-//       {isEditing ? (
-//         <input
-//           type="text"
-//           value={editableInfo[valueKey]}
-//           onChange={(e) =>
-//             setEditableInfo((prevInfo) => ({
-//               ...prevInfo,
-//               [valueKey]: e.target.value,
-//             }))
-//           }
-//         />
-//       ) : (
-//         <span className="info-value">{editableInfo[valueKey]}</span>
-//       )}
-//     </div>
-//   );
-
-//   return (
-//     <Box display="flex" >
-//       <Sidebar />
-//       <Header title="PROFILE" subtitle="User Information" />
-     
-//       <Row className="infor">
-//         <Col>
-//           <div className="profile-info">
-//             {renderInfoItem("Name", "name")}
-//             {renderInfoItem("Phone Number", "phoneNumber")}
-//             {renderInfoItem("Email", "email")}
-//             {renderInfoItem("Address", "address")}
-//             {isEditing ? (
-//               <Button
-//                 variant="outline-success"
-//                 onClick={handleSave}
-//               >
-//                 Save
-//               </Button>
-//             ) : (
-//               <Button
-//                 variant="outline-primary"
-//                 onClick={handleEdit}
-//               >
-//                 Edit
-//               </Button>
-//             )}
-//           </div>
-//         </Col>
-//       </Row>
-//     </Box >
-//   );
-// };
-
-// export default Profile;
-
-// import React, { useState } from "react";
-// import { Button } from "react-bootstrap";
-// import Header from "../../components/Header";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-// import { Box, IconButton, Typography, useTheme } from "@mui/material";
-
-// // Import the CSS file
-// import "./profile.css";
-// import Topbar from "../global/Topbar";
-// import Sidebar from "../global/Sidebar";
-
-// const Profile = () => {
-//   const [editableInfo, setEditableInfo] = useState({
-//     name: "John Doe",
-//     phoneNumber: "123-456-7890",
-//     email: "john.doe@example.com",
-//     address: "123 Main Street, Cityville",
-//   });
-
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   const handleEdit = () => {
-//     setIsEditing(true);
-//   };
-
-//   const handleSave = () => {
-//     setIsEditing(false);
-//     // You can add logic here to save the updated info to your backend or state management.
-//   };
-
-//   const renderInfoItem = (label, valueKey) => (
-//     <div className="info-item">
-//       <label className="info-label">{label}:</label>
-//       {isEditing ? (
-//         <input
-//           type="text"
-//           value={editableInfo[valueKey]}
-//           onChange={(e) =>
-//             setEditableInfo((prevInfo) => ({
-//               ...prevInfo,
-//               [valueKey]: e.target.value,
-//             }))
-//           }
-//         />
-//       ) : (
-//         <span className="info-value">{editableInfo[valueKey]}</span>
-//       )}
-//     </div>
-//   );
-
-//   const renderProfilePicture = () => (
-//     <div className="profile-picture">
-//       {/* Replace the src attribute with the actual URL or source of the user's profile picture */}
-//       <img src="https://via.placeholder.com/150" alt="Profile" />
-//     </div>
-//   );
-
-//   return (
-//     <Box className="view" display="flex">
-//       <Sidebar />
-//       <Header title="PROFILE" subtitle="User Information" />
-//       <Container>
-        
-//         <Row className="infor">
-//           <Col md={4}>
-//             {renderProfilePicture()}
-//             <div>
-//               {isEditing ? (
-//                 <Button variant="outline-success" onClick={handleSave}>
-//                   Save
-//                 </Button>
-//               ) : (
-//                 <Button variant="outline-primary" onClick={handleEdit}>
-//                   Edit
-//                 </Button>
-//               )}
-//             </div>
-//           </Col>
-//           <Col md={8}>
-//             <div className="profile-info">
-//               {renderInfoItem("Name", "name")}
-//               {renderInfoItem("Phone Number", "phoneNumber")}
-//               {renderInfoItem("Email", "email")}
-//               {renderInfoItem("Address", "address")}
-          
-//             </div>
-//           </Col>
-//         </Row>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default Profile;
-
-
 import React, { useState, useRef } from "react";
 import { Button } from "react-bootstrap";
-import Header from "../../components/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Box } from "@mui/material";
 import Topbar from "../global/Topbar";
 import Sidebar from "../global/Sidebar";
-
-// Import the CSS file
+import profileImage from "../../assets/profile.png";
 import "./profile.css";
+
 const Profile = () => {
   const [editableInfo, setEditableInfo] = useState({
-    name: "John Doe",
-    phoneNumber: "123-456-7890",
-    email: "john.doe@example.com",
-    address: "123 Main Street, Cityville",
+    fullname: "wasan subaihi",
+    languages: ["English"],
+    email: "wasan@example.com",
+    country: "Jordan",
+    city: "Amman",
+    birthday: "27/2/2001",
+    phone: "0792686028",
+    gender: "Female",
   });
 
   const [isEditing, setIsEditing] = useState(false);
-  const [profilePicture, setProfilePicture] = useState("https://via.placeholder.com/150");
+  const [isEditingInfo, setIsEditingInfo] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(profileImage);
   const fileInputRef = useRef(null);
 
   const handleEdit = () => {
@@ -461,13 +32,20 @@ const Profile = () => {
 
   const handleSave = () => {
     setIsEditing(false);
-    // You can add logic here to save the updated info to your backend or state management.
+    // Logic to save updated info
+  };
+
+  const handleEditInfo = () => {
+    setIsEditingInfo(true);
+  };
+
+  const handleSaveInfo = () => {
+    setIsEditingInfo(false);
+    // Logic to save updated additional info
   };
 
   const handleImageChange = (e) => {
-    console.log("1")
     const file = e.target.files[0];
-    
 
     if (file) {
       const reader = new FileReader();
@@ -481,34 +59,126 @@ const Profile = () => {
   };
 
   const handlePictureClick = () => {
-    console.log("hi")
     if (!isEditing) {
-      handleEdit(); // Enable editing when clicking the image
+      handleEdit();
     } else {
-      // Programmatically click the file input
       fileInputRef.current.click();
     }
   };
 
-  const renderInfoItem = (label, valueKey) => (
-    <div className="info-item">
-      <label className="info-label">{label}:</label>
-      {isEditing ? (
-        <input
-          type="text"
-          value={editableInfo[valueKey]}
-          onChange={(e) =>
-            setEditableInfo((prevInfo) => ({
-              ...prevInfo,
-              [valueKey]: e.target.value,
-            }))
-          }
-        />
-      ) : (
-        <span className="info-value">{editableInfo[valueKey]}</span>
-      )}
-    </div>
-  );
+  const handleLanguageChange = (e) => {
+    const selectedLanguages = Array.from(e.target.selectedOptions, option => option.value);
+    setEditableInfo((prevInfo) => ({
+      ...prevInfo,
+      languages: selectedLanguages,
+    }));
+  };
+
+  const renderInfoItem = (label, valueKey) => {
+    if (valueKey === "languages") {
+      const languages = ["English", "Spanish", "French", "German", "Chinese", "Japanese"];
+    
+      return (
+        <div className="info-item">
+          <h6 className="info-label">{label}:</h6>
+          <h6 className="info-value">
+            {isEditing || isEditingInfo ? (
+              <select
+                multiple
+                value={editableInfo.languages}
+                onChange={handleLanguageChange}
+                style={{ width: "180px" }} 
+              >
+                {languages.map((language, index) => (
+                  <option key={index} value={language}>{language}</option>
+                ))}
+              </select>
+            ) : (
+              editableInfo[valueKey].join(", ")
+            )}
+          </h6>
+        </div>
+      );
+    } else if (valueKey === "country" || valueKey === "city") {
+      const options = valueKey === "country" ? ["Jordan", "USA", "UK", "France"] : ["Amman", "New York", "London", "Paris"];
+    
+      return (
+        <div className="info-item">
+          <h6 className="info-label">{label}:</h6>
+          <h6 className="info-value">
+            {isEditing || isEditingInfo ? (
+              <select
+                value={editableInfo[valueKey]}
+                onChange={(e) =>
+                  setEditableInfo((prevInfo) => ({
+                    ...prevInfo,
+                    [valueKey]: e.target.value,
+                  }))
+                }
+                style={{ width: "180px" }} 
+              >
+                {options.map((option, index) => (
+                  <option key={index} value={option}>{option}</option>
+                ))}
+              </select>
+            ) : (
+              editableInfo[valueKey]
+            )}
+          </h6>
+        </div>
+      );
+    } else if (valueKey === "gender") {
+      const genderOptions = ["Female", "Male"];
+    
+      return (
+        <div className="info-item">
+          <h6 className="info-label">{label}:</h6>
+          <h6 className="info-value">
+            {isEditing || isEditingInfo ? (
+              <select
+                value={editableInfo[valueKey]}
+                onChange={(e) =>
+                  setEditableInfo((prevInfo) => ({
+                    ...prevInfo,
+                    [valueKey]: e.target.value,
+                  }))
+                }
+                style={{ width: "180px" }} 
+              >
+                {genderOptions.map((option, index) => (
+                  <option key={index} value={option}>{option}</option>
+                ))}
+              </select>
+            ) : (
+              editableInfo[valueKey]
+            )}
+          </h6>
+        </div>
+      );
+    } else {
+      return (
+        <div className="info-item">
+          <h6 className="info-label">{label}:</h6>
+          <h6 className="info-value">
+            {isEditing || isEditingInfo ? (
+              <input
+                type="text"
+                value={editableInfo[valueKey]}
+                onChange={(e) =>
+                  setEditableInfo((prevInfo) => ({
+                    ...prevInfo,
+                    [valueKey]: e.target.value,
+                  }))
+                }
+              />
+            ) : (
+              editableInfo[valueKey]
+            )}
+          </h6>
+        </div>
+      );
+    }
+  };
 
   const renderProfilePicture = () => (
     <div className="profile-picture">
@@ -521,9 +191,13 @@ const Profile = () => {
         onChange={handleImageChange}
       />
       <label htmlFor="profile-picture-input">
-        <img src={profilePicture} alt="Profile" />
+        <img
+          src={profilePicture}
+          alt="Profile"
+          style={{ width: "180px", height: "190px", borderRadius: "10%",marginLeft:"-4px",alignContent:"center",marginTop:"30px" }}
+        />
         {isEditing && (
-          <Button 
+          <Button
             variant="outline-secondary"
             className="change-picture-btn"
             onClick={handlePictureClick}
@@ -537,34 +211,62 @@ const Profile = () => {
 
   return (
     <Box className="view" display="flex">
+      <Topbar />
       <Sidebar />
-      <Header title="PROFILE" subtitle="User Information" />
-      <Container>
-        <Row className="infor">
-          <Col md={4}>
-            {renderProfilePicture()}
-            <div>
-              {isEditing ? (
-                <Button className="Bp" variant="outline-success" onClick={handleSave}>
-                  Save
-                </Button>
-              ) : (
-                <Button  className="Bp" variant="outline-primary" onClick={handleEdit}>
-                  Edit
-                </Button>
-              )}
-            </div>
-          </Col>
-          <Col md={8}>
-            <div className="profile-info">
-              {renderInfoItem("Name", "name")}
-              {renderInfoItem("Phone Number", "phoneNumber")}
-              {renderInfoItem("Email", "email")}
-              {renderInfoItem("Address", "address")}
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <Box flex="1" overflow="auto">
+        <h2 className="userinfotitle">User Information</h2>
+        <Container>
+          <Row className="infor">
+            <Col md={8}>
+              <div className="profileat">
+                <div className="profile-image">{renderProfilePicture()}</div>
+                <div className="profile-info">
+                  <h6>{renderInfoItem("Full Name", "fullname")}</h6>
+                  <h6>{renderInfoItem("Email", "email")}</h6>
+                  <h6>{renderInfoItem("Phone Number", "phone")}</h6>
+                  <div className="isedit">
+                    {isEditing ? (
+                      <Button className="Bp" variant="outline-success" onClick={handleSave}>
+                        Save
+                      </Button>
+                    ) : (
+                      <Button className="Bp" variant="outline-primary" onClick={handleEdit}>
+                        Edit
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="infor">
+            <Col md={4}>
+              <div className="profileat">
+                <div className="profile-infoo">
+                  <h6>{renderInfoItem("Country", "country")}</h6>
+                  <h6>{renderInfoItem("City", "city")}</h6>
+                  <h6>{renderInfoItem("Birthday", "birthday")}</h6>
+                  <h6>{renderInfoItem("Gender", "gender")}</h6>
+                  <h6>{renderInfoItem("Languages", "languages")}</h6>
+                 
+                  <div className="isedit">
+                    {isEditingInfo ? (
+                      <Button className="Bp" variant="outline-success" onClick={handleSaveInfo}>
+                        Save
+                      </Button>
+                    ) : (
+                      <Button className="Bp" variant="outline-primary" onClick={handleEditInfo}>
+                        Edit
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Box>
     </Box>
   );
 };

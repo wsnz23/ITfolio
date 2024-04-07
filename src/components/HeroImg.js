@@ -11,7 +11,8 @@ const HeroImg = () => {
       </div>
       <div className="con">
 <h1>Your road to tech excellence</h1>
-<p>Welcome to our IT student portfolio! Dive into a world of innovation and expertise
+<br></br>
+<p>Welcome to our Information Technology student portfolio! Dive into a world of innovation and expertise
 </p>
 <Link to="/Login" className="btn">Login</Link>
 <Link to="/Contact" className="btn btn-light">Contact</Link>

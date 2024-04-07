@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import Header from "../../components/Header";
+import "./settings.css";
+import Sidebar from '../global/Sidebar.jsx';
+import Topbar from '../global/Topbar.jsx';
+
 
 const Settings = () => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -20,39 +25,47 @@ const Settings = () => {
     }
   };
 
-  return (
-    <div>
-      <h2>Settings</h2>
-      <div>
-        <label htmlFor="current-password">Current Password:</label>
+  return ( 
+    <div className="view"  display="flex" >
+  <Sidebar />
+    <Topbar />
+    <div className="settings-container">
+    <h2 className="settings-title">password</h2>
+      <div className="form-group">
+        <label htmlFor="current-password" className="label-black">Current Password:</label>
         <input
           type="password"
+          className="form-control"
           id="current-password"
           value={currentPassword}
           onChange={(e) => setCurrentPassword(e.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="new-password">New Password:</label>
+      <div className="form-group">
+        <label htmlFor="new-password" className="label-black">New Password:</label>
         <input
           type="password"
+          className="form-control"
           id="new-password"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="confirm-new-password">Confirm New Password:</label>
+      <div className="form-group">
+        <label htmlFor="confirm-new-password" className="label-black">Confirm New Password:</label>
         <input
           type="password"
+          className="form-control"
           id="confirm-new-password"
           value={confirmNewPassword}
           onChange={(e) => setConfirmNewPassword(e.target.value)}
         />
       </div>
-      <button onClick={handlePasswordReset}>Reset Password</button>
-      {message && <p>{message}</p>}
+      <button onClick={handlePasswordReset} className="btn-reset">Reset Password</button>
+      {message && <p className="message">{message}</p>}
     </div>
+    </div>
+    
   );
 };
 

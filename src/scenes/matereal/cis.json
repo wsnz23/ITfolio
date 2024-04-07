@@ -1,0 +1,330 @@
+[
+    {
+        "label": "Compulsory college subjects",
+        "submenu": [
+            {
+                "id": 1,
+                "label": "Discrete Mathematics",
+                "skills": ["a1", "a2", "a3", "a4", "a5"],
+                "question": ["I can distinguish between propositional logic and predicate logic", "I understand the way matrices work", "I am familiar with different proof techniques", "I understand the concept of mathematical induction", "I understand the basics of set theory, number theory and graph theory"]
+            },
+            {
+                "id": 2,
+                "label": "Computer Skills for Scientific Faculties (C++)",
+                "skills": ["a6", "a7", "a8", "a9", "a10"],
+                "question": ["I understand programming fundamentals", "I understand the concept of memory management", "I am familiar with standard template library (STL)", "I am familiar with debugging", "I understand the meaning of concurrency and multithreading"]
+            },
+            {
+                "id": 3,
+                "label": "Fundamentals of Information Technology",
+                "skills": ["a11", "a12", "a13", "a14", "a15"],
+                "question": ["I am familiar with modern technologies", "I am familiar with hardware maintenance", "I get the basic principles of cloud computing and web technology", "I understand the principles of computer networks and security", "I have the skill of troubleshooting"]
+            },
+            {
+                "id": 4,
+                "label": "Web Applications Development",
+                "skills": ["a16", "a17", "a18", "a19", "a20"],
+                "question": ["I can write code using HTML, CSS, JavaScript and ReactJS", "I can use Bootstrap", "I can make API requests with React", "I can handle user input with forms and events", "I can develop single-page applications"]
+            },
+            {
+                "id": 5,
+                "label": "Object Oriented Programming (Java)",
+                "skills": ["a21", "a22", "a23", "a24", "a25"],
+                "question": ["I understand the fundamentals of programming using Java language", "I can deal with Eclipse IDE tools", "I can apply exception handling", "I can connect my code to a database", "I understand input/output (I/O) operations"]
+            },
+            {
+                "id": 6,
+                "label": "Data Structures",
+                "skills": ["a26", "a27", "a28", "a29", "a30"],
+                "question": ["I understand the basics of data structure", "I understand the concept of memory management", "I can deal with Visual Studio tools", "I can perform complexity analysis", "I can develop efficient software applications"]
+            },
+            {
+                "id": 7,
+                "label": "Database Management Systems",
+                "skills": ["a31", "a32", "a33", "a34", "a35"],
+                "question": ["I am able to apply the normalization theory for improving the relational database design", "I am able to create ERD diagrams", "I can deal with MySQL workbench tool", "I can formulate the proper SQL statements needed to construct the relational database", "I can integrate databases with programming languages"]
+            },
+            {
+                "id": 8,
+                "label": "Linear Algebra for Computational Sciences",
+                "skills": ["a36", "a37", "a38", "a39", "a40"],
+                "question": ["I understand vector spaces", "I can perform matrix operations", "I understand the role of linear algebra in machine learning", "I understand the concept of matrix decompositions", "I can perform numerical computations"]
+            }
+        ]
+    },
+    {
+        "label": "Compulsory specialization subjects",
+        "submenu": [
+            {
+                "id": 9,
+                "label": "Calculus 1",
+                "skills": ["b1", "b2", "b3", "b4", "b5"],
+                "question": ["I understand the fundamental theorem of calculus", "I am familiar with graphical interpretation", "I understand the derivatives", "I understand mathematical modeling", "I can analyse the behavior of functions"]
+            },
+            {
+                "id": 10,
+                "label": "Theory of Algorithms",
+                "skills": ["b6", "b7", "b8", "b9", "b10"],
+                "question": ["I am familiar with complexity analysis", "I understand recurrence equations and recursive algorithms", "I understand the algorithm design techniques", "I understand sorting and searching algorithms", "I understand graph-based algorithms"]
+            },
+            {
+                "id": 11,
+                "label": "Information Security and Privacy",
+                "skills": ["b11", "b12", "b13", "b14", "b15"],
+                "question": ["I can apply knowledge of mathematics to solve security problems such as in cryptography", "I can analyze a problem  and identify the security requirements appropriate to its solution", "I understand authorization protocols and can distinguish between different authentication methods", "I understand security properties and the way to implement them", "I can engage successfully in practical hands-on activities"]
+            },
+            {
+                "id": 12,
+                "label": "Software Engineering",
+                "skills": ["b16", "b17", "b18", "b19", "b20"],
+                "question": ["I understand the system development life cycle (SDLC) in all of its phases", "I can select and apply the proper data-gathering techniques such as interviews and questionnaires to collect human information requirements", "I can visualize the current system and construct both general and specific level diagrams (DFD)", "I can perform feasibility analysis of a proposed system solution", "I can produce a variety of design models of a software application according to the UML standard"]
+            },
+            {
+                "id": 13,
+                "label": "Computer Networks",
+                "skills": ["b21", "b22", "b23", "b24", "b25"],
+                "question": ["I understand networking fundamentals", "I understand network architecture and design", "I am familiar with network protocols and standards and understand the importance of network security", "I am familiar with IP addressing and subnetting", "I understand network management principles"]
+            },
+            {
+                "id": 14,
+                "label": "Operating Systems",
+                "skills": ["b26", "b27", "b28", "b29", "b30"],
+                "question": ["I understand the operating system's architecture and the interactions between the hardware and software layers in it", "I know how to deal with Linux operating system", "I am familiar with operating system security", "I understand memory, process, device and file system management", "I am familiar with various techniques for optimizing system performance"]
+            },
+            {
+                "id": 15,
+                "label": "Principles of Statistics",
+                "skills": ["b31", "b32", "b33", "b34", "b35"],
+                "question": ["I can use statistical techniques to sort the data according to accuracy", "I understand the concept of probability theory", "I can perform regression analysis", "I can perform hypothesis testing", "I understand the sampling techniques"]
+            },
+            {
+                "id": 16,
+                "label": "Computing Ethics and Documentation",
+                "skills": ["b36", "b37", "b38", "b39", "b40"],
+                "question": ["I can develop a user manual for any software", "I can distinguish between different types of reports (memos, user manual, proposal, feasibility study, progress report)", "I understand the importance of each part of the report (title, summary, abstract, introduction, main text, conclusions, references, appendices)", "I understand the concept of plagiarism", "I am familiar with ethical, legal, security, social issues and responsibilities"]
+            },
+            {
+                "id": 17,
+                "label": "Information Systems and Applications",
+                "skills": ["b41", "b42", "b43", "b44", "b45"],
+                "question": ["I can develop and manage an information system", "I understand enterprise information architecture", "I understand ERP and SCM", "I understand the concept of customer relationship management (CRM)", "I understand data analytics and business intelligence"]
+            },
+            {
+                "id": 18,
+                "label": "Advanced Java Programming",
+                "skills": ["b46", "b47", "b48", "b49", "b50"],
+                "question": ["I can apply event-handling and exception-handling in JavaFX", "I can manipulate Java strings", "I am familiar with file I/O operations", "I can use my skills to create applications with suitable graphics", "I understand and can deal with JDBC"]
+            },
+            {
+                "id": 19,
+                "label": "Computer Graphics",
+                "skills": ["b51", "b52", "b53", "b54", "b55"],
+                "question": ["I am familiar with three-dimensional object representations", "I can develop a GUI", "I am skilled in OpenGL programming in C++", "I am familiar with data visualization and data graphics", "I can apply geometric transformations"]
+            },
+            {
+                "id": 20,
+                "label": "Artificial Intelligence",
+                "skills": ["b56", "b57", "b58", "b59", "b60"],
+                "question": ["I am familiar with the term 'deep learning'", "I am familiar with natural language processing", "I can understand problems, design solutions and implement these solutions using Prolog", "I understand search algorithms", "I am familiar with data mining techniques"]
+            },
+            {
+                "id": 21,
+                "label": "Multimedia",
+                "skills": ["b61", "b62", "b63", "b64", "b65"],
+                "question": ["I understand multimedia concepts", "I can differentiate between analog and digital media", "I understand how the storage process works", "I understand digital media compression techniques", "I can work with encoding and decoding processes"]
+            },
+            {
+                "id": 22,
+                "label": "Human Computer Interaction",
+                "skills": ["b66", "b67", "b68", "b69", "b70"],
+                "question": ["I can gather and analyze the required data", "I understand ergonomics", "I have the skills needed for interaction design and I understand universal design principles", "I am familiar with evaluation paradigms and techniques", "I can create prototypes and I understand the purpose of prototyping"]
+            },
+            {
+                "id": 23,
+                "label": "Computer Assisted Learning",
+                "skills": ["b71", "b72", "b73", "b74", "b75"],
+                "question": ["I understand educational technology", "I understand pedagogical strategies", "I know how to use learning management systems (LMS)", "I have experience in research and evaluation", "I am familiar with interactive multimedia design"]
+            },
+            {
+                "id": 24,
+                "label": "Advanced Databases",
+                "skills": ["b76", "b77", "b78", "b79", "b80"],
+                "question": ["I am able to formulate the proper relational algebra statements needed to construct the relational database", "I am able to discuss the importance of transaction management and concurrency control", "I am able to apply the normalization theory for improving the relational database design", "I am able to design a suitable database solution to accommodate the needs of a specific project", "I am able to discuss the importance of data indexing"]
+            },
+            {
+                "id": 25,
+                "label": "Mobile Development Frameworks",
+                "skills": ["b81", "b82", "b83", "b84", "b85"],
+                "question": ["I have knowledge about frameworks and what they are used for", "I have experience in different programming languages such as Flutter and can design a user interface", "I can integrate mobile apps with backend services and APIs", "I am familiar with cross-platform development", "I understand the concept of mobile app architecture"]
+            },
+            {
+                "id": 26,
+                "label": "Digital Image Processing",
+                "skills": ["b86", "b87", "b88", "b89", "b90"],
+                "question": ["I can enhance and restore images in different domains", "I understand the process of image segmentation", "I can use MATLAB for image processing", "I can apply image compression techniques", "I can use image representation and description for further development"]
+            },
+            {
+                "id": 27,
+                "label": "Advanced Software Engineering",
+                "skills": ["b91", "b92", "b93", "b94", "b95"],
+                "question": ["I understand software architecture design", "I am familiar with software development methodologies", "I am familiar with software modeling and different design patterns", "I can perform software quality assurance and testing", "I can perform professional feasibility analysis"]
+            },
+            {
+                "id": 28,
+                "label": "Project Management",
+                "skills" :["b96", "b97", "b98", "b99", "b100"],
+                "question": ["I have the required skills for project planning", "I can use different methods to help me estimate time and cost of a project in an early stage", "I can manage resources efficiently", "I have budgeting and cost control skills", "I own the required skills to monitor progress, quality and manage risks"]
+            },
+            {
+                "id": 29,
+                "label": "Systems Analysis and Design",
+                "skills": ["b101", "b102", "b103", "b104", "b105"],
+                "question": ["I understand the system development life cycle (SDLC) in all of its phases", "I can perform requirements analysis", "I can perform a feasibility analysis of a proposed system solution", "I can visualize the current system and construct both general and specific-level diagrams (DFD)", "I can select and apply the proper data-gathering techniques such as interviews and questionnaires to collect human information requirements"]
+            },
+            {
+                "id": 30,
+                "label": "Geographical Information Systems",
+                "skills": ["b106", "b107", "b108", "b109", "b110"],
+                "question": ["I have the ability to use the proper GIS software package to create applications", "I have the ability to deploy the development lifecycle activities to produce a system application", "I understand cartography and can design maps", "I can distinguish between different map scales and I understand spatial analysis", "I am skilled in geodatabase design and management"]
+            }
+        ]
+    },
+    {
+        "label": "Optional specialization subjects",
+        "submenu": [
+            {
+                "id": 31,
+                "label": "Data Mining",
+                "skills": ["c1", "c2", "c3", "c4", "c5"],
+                "question": ["I am familiar with statistical analysis", "I am familiar with machine learning algorithms", "I understand the basic concepts of data preprocessing", "I understand the importance of model evaluation and validation", "I understand text mining and natural language processing (NLP)"]
+            },
+            {
+                "id": 32,
+                "label": "Advanced AI Programming",
+                "skills": ["c6", "c7", "c8", "c9", "c10"],
+                "question": ["I can communicate visually and effectively with Matplotlib and Seaborn", "I understand and can format problems to be solved using ML techniques", "I have knowledge representation skills", "I have expertise in creating models by combining the data with algorithms", "I can use Python and libraries such as Scikit-learn"]
+            },
+            {
+                "id": 33,
+                "label": "Natural Language Processing",
+                "skills": ["c11", "c12", "c13", "c14", "c15"],
+                "question": ["I know the origins of natural language processing (NLP)", "I am familiar with language structure representation", "I can use natural language toolkit (NLTK)", "I am familiar with parsing techniques", "I understand the concept of text preprocessing and representation"]
+            },
+            {
+                "id": 34,
+                "label": "Machine Learning and Neural Networks",
+                "skills": ["c16", "c17", "c18", "c19", "c20"],
+                "question": ["I understand the principles of learning theory", "I understand the mathematical foundations of machine learning", "I can derive practical solutions using predictive analytics", "I am familiar with neural network architectures", "I am familiar with the concept of data preprocessing"]
+            },
+            {
+                "id": 35,
+                "label": "Health Informatics",
+                "skills": ["c21", "c22", "c23", "c24", "c25"],
+                "question": ["I am familiar with health informatics standards and regulations", "I am familiar with electronic health records (EHR)", "I understand the importance of healthcare data privacy and security", "I understand the health information exchange (HIE)", "I am able to implement health informatics solutions"]
+            },
+            {
+                "id": 36,
+                "label": "Web Server Programming",
+                "skills": ["c26", "c27", "c28", "c29", "c30"],
+                "question": ["I have the needed version control skills", "I am familiar with and can use web application frameworks", "I can apply database integration", "I am familiar with different web services and microservices architecture", "I can perform web performance optimization"]
+            },
+            {
+                "id": 37,
+                "label": "Information Technology Entrepreneurship and Innovation",
+                "skills": ["c31", "c32", "c33", "c34", "c35"],
+                "question": ["I can manage a project successfully", "I can write ethically and am aware of copyright issues", "I am familiar with ethical, legal, and social issues and responsibilities", "I have the skill of entrepreneurship", "I can identify a specific problem, analyze it and propose an innovative solution for it"]
+            },
+            {
+                "id": 38,
+                "label": "Database Technologies and Applications",
+                "skills": ["c36", "c37", "c38", "c39", "c40"],
+                "question": ["I know the methods for performing query processing over a distributed database", "I can differentiate between centralized and distributed database systems", "I can apply the time-stamping protocol to prevent deadlock when transactions are executing", "I can apply the 2-phase locking protocol to guarantee the serializability of transactions in a distributed database system", "I am skilled in data fragmentation, horizontal and vertical"]
+            },
+            {
+                "id": 39,
+                "label": "User Interface/Experience Design",
+                "skills": ["c41", "c42", "c43", "c44", "c45"],
+                "question": ["I can do proper research on the user", "I am able to create an information architecture", "I am able to create interaction and visual design", "I can develop a user interface (UI)", "I can perform usability testing"]
+            },
+            {
+                "id": 40,
+                "label": "Business Process Re-engineering",
+                "skills": ["c46", "c47", "c48", "c49", "c50"],
+                "question": ["I am able to perform a process analysis", "I am able to perform strategic alignment", "I am able to manage changes and risks", "I can perform process redesign", "I am able to do technology integration"]
+            },
+            {
+                "id": 41,
+                "label": "Information and Knowledge Management",
+                "skills": ["c51", "c52", "c53", "c54", "c55"],
+                "question": ["I understand the importance of information security and privacy", "I can manage databases", "I am familiar with the different methods of knowledge representation", "I understand knowledge discovery and data mining and can efficiently retrieve information", "I know how to perform content management"]
+            },
+            {
+                "id": 42,
+                "label": "Security of Web Applications",
+                "skills": ["c56", "c57", "c58", "c59", "c60"],
+                "question": ["I understand the principles of web application security", "I understand the concept of threat modeling", "I am familiar with secure coding practices and various security frameworks", "I am familiar with data encryption and cryptography", "I am familiar with the process of security testing"]
+            },
+            {
+                "id": 43,
+                "label": "Intelligent Information Systems",
+                "skills": ["c61", "c62", "c63", "c64", "c65"],
+                "question": ["I am familiar with the basics of machine learning", "I have knowledge of intelligent information systems (IIS)", "I am familiar with biometric systems", "I understand the methods of knowledge representation and acquisition", "I am familiar with agent-based models"]
+            },
+            {
+                "id": 44,
+                "label": "Development and Operations (DevOps)",
+                "skills": ["c66", "c67", "c68", "c69", "c70"],
+                "question": ["I am familiar with DevOps principles and practices", "I am able to do planning for DevOps", "I can perform artifact management", "I understand the way cloud computing works", "I can perform continuous integration (CI)"]
+            },
+            {
+                "id": 45,
+                "label": "Advanced Multimedia",
+                "skills": ["c71", "c72", "c73", "c74", "c75"],
+                "question": ["I can differentiate between digital and analog media", "I understand animation concepts in 2-D and the various animation types", "I am familiar with digital video editing", "I am familiar with audio editing and production", "I understand 3-D concepts perfectly and can apply 3-D modeling and animation"]
+            },
+            {
+                "id": 46,
+                "label": "Information Systems Audit and Quality Assurance",
+                "skills": ["c76", "c77", "c78", "c79", "c80"],
+                "question": ["I am familiar with information systems audit procedures", "I can create and apply a comprehensive software quality assurance (SQA) plan", "I am able to create and manage a SQA team", "I can apply SQA methods in an agile environment", "I have the ability to analyze data"]
+            },
+            {
+                "id": 47,
+                "label": "Cloud Computing",
+                "skills": ["c81", "c82", "c83", "c84", "c85"],
+                "question": ["I am familiar with the cloud service models and understand the importance of cloud security", "I am able to manage both networks and databases successfully", "I can perform cloud monitoring and cloud management", "I can perform cost management", "I am familiar with Linux and operating systems in general"]
+            },
+            {
+                "id": 48,
+                "label": "Game Engines Design",
+                "skills": ["c86", "c87", "c88", "c89", "c90"],
+                "question": ["I understand how to do scripting and gameplay programming", "I am familiar with the game engine architecture", "I have expertise in graphics programming", "I understand physics simulation", "I can do audio programming"]
+            },
+            {
+                "id": 49,
+                "label": "Virtual Reality",
+                "skills": ["c91", "c92", "c93", "c94", "c95"],
+                "question": ["I am familiar with the many different VR platforms", "I have knowledge of VR principles and its hardware and software components", "I understand human sensory and motor systems", "I have the skill of storytelling and narrative design", "I understand the concept of multimodal user interaction and perception"]
+            },
+            {
+                "id": 50,
+                "label": "Internet of Things (IoT)",
+                "skills": ["c96", "c97", "c98", "c99", "c100"],
+                "question": ["I understand IoT applications and technologies", "I understand the development of real-world IoT applications", "I am familiar with networking technologies", "I am familiar with the basics of machine learning", "I can perform data acquisition and processing"]
+            },
+            {
+                "id": 51,
+                "label": "E-Payment Systems",
+                "skills": ["c101", "c102", "c103", "c104", "c105"],
+                "question": ["I am familiar with the payment processing technologies", "I am familiar with the techniques used for fraud detection and prevention", "I am familiar with payment gateway integration", "I understand the concepts of customer relationship management (CRM)e-commerce and online payments", "I have expertise in user experience (UX) design"]
+            },
+            {
+                "id": 52,
+                "label": "Digital Speech Processing",
+                "skills": ["c106", "c107", "c108", "c109", "c110"],
+                "question": ["I am familiar with speech signal processing", "I understand the way speech recognition works", "I understand the concept of speech synthesis", "I understand the way emotion recognition works", "I understand how to model language using various techniques to improve the accuracy of speech recognition systems and apply speech enhancements"]
+            }
+        ]
+    }
+]
+

@@ -1,0 +1,169 @@
+/* Add your styles here */
+.resume {
+  display: flex;
+  width: 210mm; /* A4 width */
+  height: 297mm; /* A4 height */
+  margin: 0 auto;
+  color: #333; /* Light mode text color */
+  background: rgb(124, 180, 232);
+}
+
+.cv-container {
+  width: 225mm; 
+  margin: 0 auto;
+  margin-top: 80px;
+  border-radius: 5px;
+  height: fit-content;
+  padding: 20px;
+  background-color: rgba(245, 245, 245, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+.dark-theme {
+  background-color: #000000; /* Dark background color */
+  color: #ffffff; /* Light text color */
+  /* Add more dark theme styles as needed */
+}
+
+.resume .dark-theme{
+  background-color: #000000; /* Dark background color */
+  color: #ffffff; /* Light text color */
+}
+
+
+.sidebar {
+  width: 40%; /* Adjust as needed */
+  
+}
+
+.main-content {
+  width: 60%; /* Adjust as needed */
+  
+}
+
+.p-picture {
+  width: 150px; /* Adjust as needed */
+  height: 150px; /* Adjust as needed */
+  border-radius: 50%;
+  margin-top: 30px;
+  margin-left:55px;
+}
+
+.personal-info {
+  margin-left: 20px; /* Adjust as needed */
+}
+
+.section {
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.side-section {
+  width: 70%; /* Adjust as needed */
+  margin-left: 0px; /* Adjust as needed */
+  
+  color: black;
+ background-color: whitesmoke;
+}
+.cont {
+ 
+
+}
+
+.download-btn {
+  background: transparent;
+  border: transparent;
+  height: auto;
+  font-size: 1rem;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: -30px;
+}
+
+.theme-toggle{
+  height: auto;
+  background: transparent;
+  border: transparent;
+  font-size: 1rem;
+  padding: 10px;
+  cursor: pointer;
+   margin-left: -30px;
+}
+
+.personal-info{
+  padding-left: 50px;
+}
+
+.section1
+{
+  margin-top:15px;
+  margin-bottom:15px;
+  margin-left: 10px;
+}
+
+.connected-list {
+  list-style: none;
+  padding: 0;
+}
+
+.connected-list li {
+  position: relative;
+  padding-left: 20px; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust space between items */
+}
+
+.connected-list li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px; /* Adjust thickness of the line */
+  background-color: rgb(11, 11, 11); /* Adjust line color */
+  bottom: -20px; /* Ensure the line covers the space between items */
+}
+
+.connected-list li:last-child::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px; /* Adjust thickness of the line */
+  background-color: rgb(0, 0, 0); /* Adjust line color */
+  bottom: 0;
+}
+
+.star-list {
+  list-style-type: none; /* Remove default numbering */
+   /* Add padding to align the stars with the text content */
+}
+
+.star-list li:before {
+  content: '\2605'; /* Unicode character for a star */
+  color: gold; /* Color of the star */
+  margin-right: 5px; /* Space between the star and the text */
+}
+
+.olcv1 {
+  list-style-type: none; /* Remove default numbering */
+   /* Add padding to align the stars with the text content */
+}
+
+.olcv1 li:before {
+  content: '\2713'; /* Unicode character for a star */
+  margin-right: 5px; /* Space between the star and the text */
+}
+.olcv2-list {
+  list-style-type: none; /* Remove default numbering */
+   /* Add padding to align the stars with the text content */
+}
+
+.olcv2 li:before {
+  content: '\1F524'; /* Unicode character for a star */
+  margin-right: 5px; /* Space between the star and the text */
+}
+
+.section{
+  margin-left: 20px;
+}
