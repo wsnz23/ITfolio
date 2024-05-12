@@ -20,6 +20,7 @@ const Dashboard = () => {
 
   return (
     <Box className="view"  display="flex">
+       <Box flex="1" overflow="auto">
 <Pie/>
       {/* HEADER */}
       <Box
@@ -297,7 +298,7 @@ const Dashboard = () => {
           </Box>
         </Box> */}
       </Box>
-    </Box>
+    </Box></Box>
   );
 };
 

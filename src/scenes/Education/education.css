@@ -1,5 +1,5 @@
-.work-container {
-    width: fit-content;
+.edu-container {
+  width: 50%;
     margin: 80px auto; /* Adjust top margin to center vertically */
     padding: 20px;
     border-radius: 5px;
@@ -10,6 +10,9 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow */
   }
   
+  .edu-container input {
+    width: 25%;
+  }
   
     .workbutton {
       color: #fff;

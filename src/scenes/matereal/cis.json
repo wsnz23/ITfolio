@@ -325,6 +325,77 @@
                 "question": ["I am familiar with speech signal processing", "I understand the way speech recognition works", "I understand the concept of speech synthesis", "I understand the way emotion recognition works", "I understand how to model language using various techniques to improve the accuracy of speech recognition systems and apply speech enhancements"]
             }
         ]
+    },
+    {
+        "label": "Subjects Soft Skills",
+        "submenu": [
+            {
+                "id": 31,
+                "label": "problem Sovling and Analytical Thinking",
+                "skills": ["c1", "c2", "c3", "c4", "c5"],
+                "question": ["I am familiar with statistical analysis", "I am familiar with machine learning algorithms", "I understand the basic concepts of data preprocessing", "I understand the importance of model evaluation and validation", "I understand text mining and natural language processing (NLP)"]
+            },
+            {
+                "id": 32,
+                "label": "Communication and Teamwork",
+                "skills": ["c6", "c7", "c8", "c9", "c10"],
+                "question": ["I can communicate visually and effectively with Matplotlib and Seaborn", "I understand and can format problems to be solved using ML techniques", "I have knowledge representation skills", "I have expertise in creating models by combining the data with algorithms", "I can use Python and libraries such as Scikit-learn"]
+            },
+            {
+                "id": 33,
+                "label": "Time Management",
+                "skills": ["c11", "c12", "c13", "c14", "c15"],
+                "question": ["I know the origins of natural language processing (NLP)", "I am familiar with language structure representation", "I can use natural language toolkit (NLTK)", "I am familiar with parsing techniques", "I understand the concept of text preprocessing and representation"]
+            },
+            {
+                "id": 34,
+                "label": "Project Management",
+                "skills": ["c16", "c17", "c18", "c19", "c20"],
+                "question": ["I understand the principles of learning theory", "I understand the mathematical foundations of machine learning", "I can derive practical solutions using predictive analytics", "I am familiar with neural network architectures", "I am familiar with the concept of data preprocessing"]
+            },
+            {
+                "id": 35,
+                "label": "Creativity",
+                "skills": ["c21", "c22", "c23", "c24", "c25"],
+                "question": ["I am familiar with health informatics standards and regulations", "I am familiar with electronic health records (EHR)", "I understand the importance of healthcare data privacy and security", "I understand the health information exchange (HIE)", "I am able to implement health informatics solutions"]
+            },
+            {
+                "id": 36,
+                "label":   "Leadership",
+                "skills": ["c26", "c27", "c28", "c29", "c30"],
+                "question": ["I have the needed version control skills", "I am familiar with and can use web application frameworks", "I can apply database integration", "I am familiar with different web services and microservices architecture", "I can perform web performance optimization"]
+            },
+            {
+                "id": 37,
+                "label": "Attention to Detail",
+                "skills": ["c31", "c32", "c33", "c34", "c35"],
+                "question": ["I can manage a project successfully", "I can write ethically and am aware of copyright issues", "I am familiar with ethical, legal, and social issues and responsibilities", "I have the skill of entrepreneurship", "I can identify a specific problem, analyze it and propose an innovative solution for it"]
+            },
+            {
+                "id": 38,
+                "label": "Organization",
+                "skills": ["c36", "c37", "c38", "c39", "c40"],
+                "question": ["I know the methods for performing query processing over a distributed database", "I can differentiate between centralized and distributed database systems", "I can apply the time-stamping protocol to prevent deadlock when transactions are executing", "I can apply the 2-phase locking protocol to guarantee the serializability of transactions in a distributed database system", "I am skilled in data fragmentation, horizontal and vertical"]
+            },
+            {
+                "id": 39,
+                "label": "Presentation",
+                "skills": ["c41", "c42", "c43", "c44", "c45"],
+                "question": ["I can do proper research on the user", "I am able to create an information architecture", "I am able to create interaction and visual design", "I can develop a user interface (UI)", "I can perform usability testing"]
+            },
+            {
+                "id": 40,
+                "label": "Adaptability",
+                "skills": ["c46", "c47", "c48", "c49", "c50"],
+                "question": ["I am able to perform a process analysis", "I am able to perform strategic alignment", "I am able to manage changes and risks", "I can perform process redesign", "I am able to do technology integration"]
+            },
+            {
+                "id": 41,
+                "label": "Working Independently",
+                "skills": ["c51", "c52", "c53", "c54", "c55"],
+                "question": ["I understand the importance of information security and privacy", "I can manage databases", "I am familiar with the different methods of knowledge representation", "I understand knowledge discovery and data mining and can efficiently retrieve information", "I know how to perform content management"]
+            }
+        ]
     }
 ]
 

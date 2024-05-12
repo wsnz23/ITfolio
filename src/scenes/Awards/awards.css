@@ -49,9 +49,11 @@
     color: black;
     
   }
-
+  .skill-container input {
+    width: 50%;
+  }
   .skill-container{
-      width: fit-content;
+      width: 40%;
       margin: 80px auto; /* Adjust top margin to center vertically */
       padding: 20px;
       border-radius: 5px;

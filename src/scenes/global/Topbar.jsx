@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
+import { Link } from "react-router-dom";
 
 const Topbar = () => {
   const theme = useTheme();
@@ -34,6 +36,11 @@ const Topbar = () => {
             <LightModeOutlinedIcon />
           )}
         </IconButton>
+        <Link to="/">
+          <IconButton>
+            <LogoutTwoToneIcon/>
+          </IconButton>
+        </Link>
         {/* Add other icons here if needed */}
       </Box>
     </Box>

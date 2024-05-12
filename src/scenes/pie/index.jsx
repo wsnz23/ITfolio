@@ -1,107 +1,91 @@
-// import { Box } from "@mui/material";
-// import Header from "../../components/Header";
-// import PieChart from "../../components/PieChart";
-// import Sidebar from "../global/Sidebar";
-
-// const Pie = () => {
-//   return (
-//     <Box m="5px" >
-
-//       {/* <Header title="Pie Chart" subtitle="Simple Pie Chart" /> */}
-      
-//       <Box display="flex">
-//         <Sidebar />
-//         <Box flex="1" height="75vh" 
-//         marginTop="150px"
-//         >
-//           <PieChart />
-//           Pie Chart 
-//           <br></br>
-//           Simple Pie Chart
-//         </Box>
-//       </Box>
-//     </Box>
-//   );
-// };
-
-// export default Pie;
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import './style.css';
-import { Box } from "@mui/system";
+import { Box } from "@mui/material";
 import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
-
-
-const skillsData = [
-  { title: "HTML", percentage: 95, color: "html" },
-  { title: "CSS", percentage: 80, color: "css" },
-  { title: "JavaScript", percentage: 60, color: "javascript" },
-  { title: "NodeJS", percentage: 40, color: "nodejs" },
-  { title: "ReactJS", percentage: 70, color: "reactjs" },
-  { title: "ExpressJS", percentage: 75, color: "expressjs" },
-];
+import Axios from "axios";
 
 function SkillsBar() {
-  return ( <div className="view"  display="flex" >
-  <Sidebar />
-    <Topbar />
-    <div className="chart-container">
-    <h2 className="settings-title">Skills acquired from university subjects</h2>
-      {skillsData.map((skill, index) => (
-        <div className="skill-box" key={index}>
-        <h3> {skill.title} </h3>
-          <div className="skill-bar">
-            <span className={`skill-per ${skill.color}`}>
-              <span className="tooltip">{`${skill.percentage}%`}</span>
-            </span>
+  const [majorSkills, setMajorSkills] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        console.log(token); // Log the token to check if it's correct
+
+        // Fetch chart data
+        const chartResponse = await Axios.get("http://localhost:3001/getchart");
+        const chartData = chartResponse.data;
+
+        // Fetch user data using the token
+        const response = await Axios.post("http://localhost:3001/userdata", { token });
+        const userMajor = response.data.data.Major;
+        const username = response.data.data.Username;
+        const userData = response.data.data;
+        console.log(userData);
+
+        // Check if user exists in chart data
+        const userExists = chartData.some(data => data.username === username);
+        console.log(userExists);
+
+        if (userExists) {
+          // Find the document related to the user's major
+          const userDocument = chartData.find(data => data.username === username);
+          console.log(userDocument);
+
+          
+          const skillsWithPercentage = userDocument.submenu.map(submenu => {
+            const totalRates = submenu.courses.reduce((total, course) => total + (course.rate || 0), 0);
+            const percent = (totalRates / submenu.count) ;
+            return { skill: submenu.skills, percent };
+          });
+          setMajorSkills(skillsWithPercentage); 
+        } else {
+          console.error(`Error: No data found for user '${username}'`);
+         
+          const userMajorDocument = chartData.find(doc => doc.major === userMajor);
+          console.log(userMajorDocument);
+           if (userMajorDocument) {
+      
+            const skillsWithPercentage = userMajorDocument.submenu.map(submenu => {
+             const totalRates = submenu.courses.reduce((total, course) => total + (course.rate || 0), 0);
+             const percent = (totalRates / submenu.count) * 100; 
+              return { skill: submenu.skills, percent };
+             });
+            setMajorSkills(skillsWithPercentage);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <Box className="view" display="flex">
+      <Topbar />
+      <Sidebar />
+      <Box flex="1" overflow="auto">
+      <div className="chart-container">
+        <h2 className="settings-title">Skills acquired from university subjects</h2>
+        {majorSkills.map((skill, index) => (
+          <div className="skill-box" key={index}>
+            <h3>{skill.skill}</h3>
+            
+            <div className="skill-bar">
+              <span className={`skill-per`} style={{ width: `${skill.percent || 0}%`, backgroundColor: '#007bff' }}>
+                <span className="tooltip">{skill.percent ? `${skill.percent.toFixed(2)}%` : '0%'}</span>
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
-   </div>
-   </div>
+        ))}
+      </div>
+    </Box>
+    </Box>
   );
 }
 
 export default SkillsBar;
-
-// import React from "react";
-// import "./style.css";
-// import { Box } from "@mui/system";
-// import Sidebar from "../global/Sidebar";
-// import Topbar from "../global/Topbar";
-
-// const skillsData = [
-//   { title: "HTML", percentage: 95, color: "html" },
-//   { title: "CSS", percentage: 80, color: "css" },
-//   { title: "JavaScript", percentage: 60, color: "javascript" },
-//   { title: "NodeJS", percentage: 40, color: "nodejs" },
-//   { title: "ReactJS", percentage: 70, color: "reactjs" },
-//   { title: "ExpressJS", percentage: 75, color: "expressjs" },
-// ];
-
-// function SkillsBar() {
-//   return (
-//     <Box className="grid-container" >
-//     {/* <div className="item1"> <Topbar /></div>  */}
-//      <div className="item2"><Sidebar /></div>
-//       <Box  className="item3">
-//         <div className="conChart">
-//           <h1 className="title-text">My Skills</h1>
-
-//           {skillsData.map((skill, index) => (
-//             <div className="skill-box" key={index}>
-//               <span className="title">{skill.title}</span>
-//               <div className="skill-bar">
-//                 <span className={`skill-per ${skill.color}`}>
-//                   <span className="tooltip">{`${skill.percentage}%`}</span>
-//                 </span>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </Box>
-//     </Box>
-//   );
-// }
-
-// export default SkillsBar;

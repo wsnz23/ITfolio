@@ -1,75 +1,91 @@
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Button } from '@mui/material';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import SendVerificationCode from './SendVerificationCode.jsx'; // Import SendVerificationCode component
+import { Container, Typography, TextField, Button, Box } from '@mui/material';
+import axios from 'axios'; // Import Axios
+import { styled } from '@mui/material/styles';
+const CustomButton = styled(Button)({
+  borderRadius: 20,
+  width: '20%',
+  marginTop: 10,
+  marginLeft: 200,
+  backgroundColor: '#1f2a40',
+  color: 'white',
+  '&:hover': {
+    backgroundColor: '#1b6698',
+    color: 'black',
+  },
+});
 
 const ForgetPass = () => {
   const [email, setEmail] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [step, setStep] = useState(1); // Step 1: Enter email, Step 2: Enter verification code, Step 3: Enter new password
 
   const handleSubmitEmail = (e) => {
     e.preventDefault();
-    // Code to send email with verification code
-    setStep(2);
-  };
-
-  const handleSubmitVerificationCode = (e) => {
-    e.preventDefault();
-    // Code to verify the verification code
-    setStep(3);
-  };
-
-  const handleSubmitNewPassword = (e) => {
-    e.preventDefault();
-    // Code to update the password
-    alert('Password changed successfully!');
+    console.log(email);
+    
+    // Use Axios to make the POST request
+    axios.post("http://localhost:3001/forget-password", { email })
+      .then((response) => {
+        console.log(response.data, "userRegister");
+        alert(response.data.status);
+       
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Failed to send password reset email');
+      }); setEmail('');
   };
 
   return (
-    <Container maxWidth="md">
-      <div style={{ marginTop: '50px' ,color:'white'}}>
-        <Typography variant="h4" align="center" color="white" gutterBottom >
+    <Box
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    height="100vh"
+    style={{ backgroundImage: "url('background.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#141b2d', color: 'white' }}
+  >
+    <Container maxWidth="sm">
+      <Box
+        style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.4)',
+          padding: 20,
+          borderRadius: 10,
+          boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',
+        
+        }}
+      >
+        <Typography variant="h3" align="center" style={{ color: '#ffffff' }} marginLeft='10px' gutterBottom>
           ITFolio - Forget Password
         </Typography>
-        {step === 1 && (
-          <form onSubmit={handleSubmitEmail}>
-            <TextField
-              type="email"
-              label="Email"
-              variant="outlined"
-              fullWidth
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              margin="normal"
-            />
-            <Button type="submit" variant="contained" color="primary" fullWidth>
-              Send Verification Code
-            </Button>
-          </form>
-        )}
-        {step === 2 && <SendVerificationCode />} {/* Render SendVerificationCode component */}
-        {step === 3 && (
-          <form onSubmit={handleSubmitNewPassword}>
-            <TextField
-              type="password"
-              label="New Password"
-              variant="outlined"
-              fullWidth
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              required
-              margin="normal"
-            />
-            <Button type="submit" variant="contained" color="primary" fullWidth>
-              Change Password
-            </Button>
-          </form>
-        )}
-      </div>
+  <br></br>
+        <form onSubmit={handleSubmitEmail}>
+        <input
+  type="email"
+  placeholder="Enter your gmail"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  required
+  style={{
+    color: 'black',
+    borderRadius: 30,
+    background: 'white',
+    height: 37,
+    width: '70%',
+    padding: '10px',
+    border: '1px solid gray',
+    marginLeft:'80px'
+  }}
+/>
+
+
+  
+  <CustomButton type="submit" variant="contained" color="primary">
+  Send
+</CustomButton>
+        </form>
+      </Box>
     </Container>
+  </Box>
+  
   );
 };
 

@@ -53,7 +53,7 @@ import Cv from "./scenes/Cv/index";
 import Contacts from "./scenes/contacts";
 import Pie from "./scenes/pie";
 import Forgetpass from "./components/forgetpass";
-import ResetPassword from "./components/ResetPassword";
+
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Sidebar from "./scenes/global/Sidebar";
@@ -90,7 +90,7 @@ function App() {
            <Route path="/Userprofile" element={<Team />} />
            <Route path="/Settings" element={<Settings />} />
            <Route path="/forgetpass" element={<Forgetpass />} />
-           <Route path="/ResetPassword" element={<ResetPassword />} />
+          
 
 
             </Routes>

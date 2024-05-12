@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -8,32 +8,111 @@ import Topbar from "../global/Topbar";
 import Sidebar from "../global/Sidebar";
 import profileImage from "../../assets/profile.png";
 import "./profile.css";
+import Axios from "axios";
 
 const Profile = () => {
   const [editableInfo, setEditableInfo] = useState({
-    fullname: "wasan subaihi",
-    languages: ["English"],
-    email: "wasan@example.com",
-    country: "Jordan",
-    city: "Amman",
-    birthday: "27/2/2001",
-    phone: "0792686028",
-    gender: "Female",
+    fullname: "",
+    email: "",
+    phone: "",
+    country: "",
+    city: "",
+    birthday: "",
+    gender: "",
+    languages: [],
+    profilePicture: profileImage,
   });
-
+  
   const [isEditing, setIsEditing] = useState(false);
   const [isEditingInfo, setIsEditingInfo] = useState(false);
   const [profilePicture, setProfilePicture] = useState(profileImage);
   const fileInputRef = useRef(null);
 
+  useEffect(() => {
+    // Fetch user data when the component mounts
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log(token); // Log the token to check if it's correct
+      const response = await Axios.post("http://localhost:3001/userdata", { token });
+      const userData = response.data.data;
+      const useremail = response.data.data.Email;
+      const userphone = response.data.data.phone;
+      const userfn = response.data.data.FullName;
+      const usercity = response.data.data.city;
+      const usercountry = response.data.data.country;
+      const usergender = response.data.data.gender;
+      const userbirth = response.data.data.birthday;
+      const userlan= response.data.data.languages;
+    // Inside fetchUserData function
+const userprofile = response.data.data.profilePicture;
+
+      console.log(userData);
+      // Update the editableInfo state object with the fetched data
+      setEditableInfo({
+        ...userData,
+      email: useremail, // Assuming useremail is the variable containing the user's email
+      fullname: userfn, // Assuming userfn is the variable containing the user's full name
+       phone:userphone,
+       languages:userlan,
+       country:usercountry,
+      city:usercity,
+      gender:usergender,
+      birthday:userbirth,
+      profilePicture:userprofile || profileImage
+      });
+    
+   
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+  
+
   const handleEdit = () => {
     setIsEditing(true);
   };
 
-  const handleSave = () => {
-    setIsEditing(false);
-    // Logic to save updated info
+  const handleSave = async () => {
+    try {
+      // Logic to save updated info
+      const token = localStorage.getItem('token');
+      const username = editableInfo.Username; // Assuming Username is available in editableInfo
+      const pro = editableInfo.profilePicture; // Retrieve profile picture from editableInfo
+      
+      // Update the profilePicture in the updatedData
+      const updatedData = {
+        ...editableInfo,
+        profilePicture: pro,
+      };
+  
+      // Exclude the password field from the updated data
+      const { Password, ...dataToSend } = updatedData;
+  
+      // Send an update request to the server
+      const response = await Axios.put(`http://localhost:3001/updateusers/${username}`, dataToSend, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Assuming you need to send the token in the headers
+        },
+      });
+  
+      console.log("Data updated successfully:", response.data);
+  
+      // Fetch updated data after saving
+      await fetchUserData();
+  
+      // Toggle back to edit mode
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error saving user data:', error);
+      // Handle errors here, show an error message to the user, etc.
+    }
   };
+  
+  
 
   const handleEditInfo = () => {
     setIsEditingInfo(true);
@@ -46,17 +125,24 @@ const Profile = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-
+    
     if (file) {
       const reader = new FileReader();
-
+    
       reader.onloadend = () => {
         setProfilePicture(reader.result);
+        
+        // Update the profilePicture in editableInfo
+        setEditableInfo((prevInfo) => ({
+          ...prevInfo,
+          profilePicture: reader.result,
+        }));
       };
-
+    
       reader.readAsDataURL(file);
     }
   };
+  
 
   const handlePictureClick = () => {
     if (!isEditing) {
@@ -76,7 +162,7 @@ const Profile = () => {
 
   const renderInfoItem = (label, valueKey) => {
     if (valueKey === "languages") {
-      const languages = ["English", "Spanish", "French", "German", "Chinese", "Japanese"];
+      const languages = ["English", "Arabic","Spanish", "French", "German", "Chinese", "Japanese"];
     
       return (
         <div className="info-item">
@@ -100,7 +186,7 @@ const Profile = () => {
         </div>
       );
     } else if (valueKey === "country" || valueKey === "city") {
-      const options = valueKey === "country" ? ["Jordan", "USA", "UK", "France"] : ["Amman", "New York", "London", "Paris"];
+      const options = valueKey === "country" ? ["","Jordan", "USA", "UK", "France"] : ["","Amman", "New York", "London", "Paris"];
     
       return (
         <div className="info-item">
@@ -108,7 +194,7 @@ const Profile = () => {
           <h6 className="info-value">
             {isEditing || isEditingInfo ? (
               <select
-                value={editableInfo[valueKey]}
+                value={editableInfo[valueKey]||""}
                 onChange={(e) =>
                   setEditableInfo((prevInfo) => ({
                     ...prevInfo,
@@ -128,7 +214,7 @@ const Profile = () => {
         </div>
       );
     } else if (valueKey === "gender") {
-      const genderOptions = ["Female", "Male"];
+      const genderOptions = ["","Female", "Male"];
     
       return (
         <div className="info-item">
@@ -136,7 +222,7 @@ const Profile = () => {
           <h6 className="info-value">
             {isEditing || isEditingInfo ? (
               <select
-                value={editableInfo[valueKey]}
+              value={editableInfo[valueKey] || ""}
                 onChange={(e) =>
                   setEditableInfo((prevInfo) => ({
                     ...prevInfo,
@@ -192,9 +278,9 @@ const Profile = () => {
       />
       <label htmlFor="profile-picture-input">
         <img
-          src={profilePicture}
-          alt="Profile"
-          style={{ width: "180px", height: "190px", borderRadius: "10%",marginLeft:"-4px",alignContent:"center",marginTop:"30px" }}
+          src={editableInfo.profilePicture} // Use editableInfo.profilePicture to render the profile picture
+          alt="profile"
+          style={{ width: "180px", height: "190px", borderRadius: "10%", marginLeft: "-4px", alignContent: "center", marginTop: "30px" }}
         />
         {isEditing && (
           <Button
@@ -208,7 +294,7 @@ const Profile = () => {
       </label>
     </div>
   );
-
+  
   return (
     <Box className="view" display="flex">
       <Topbar />
@@ -249,18 +335,7 @@ const Profile = () => {
                   <h6>{renderInfoItem("Birthday", "birthday")}</h6>
                   <h6>{renderInfoItem("Gender", "gender")}</h6>
                   <h6>{renderInfoItem("Languages", "languages")}</h6>
-                 
-                  <div className="isedit">
-                    {isEditingInfo ? (
-                      <Button className="Bp" variant="outline-success" onClick={handleSaveInfo}>
-                        Save
-                      </Button>
-                    ) : (
-                      <Button className="Bp" variant="outline-primary" onClick={handleEditInfo}>
-                        Edit
-                      </Button>
-                    )}
-                  </div>
+                  
                 </div>
               </div>
             </Col>
