@@ -24,6 +24,92 @@ app.use(express.urlencoded({extended:false}))
 
 mongoose.connect("mongodb+srv://wasansubaihi16:JtkTeMagKrOrtUTL@cluster0.ouwavxd.mongodb.net/ITfolio?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true });
 
+
+app.get('/getuseradmin', async (req, res) => {
+  try {
+    const users = await UserModel.find({ case: { $ne: "admin" } }).select('-Username');
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+app.get('/user-checkboxes/:username', async (req, res) => {
+  try {
+    const { username } = req.params;
+    const userCheckboxes = await Checkbox.findOne({ username: username });
+
+    if (!userCheckboxes) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json(userCheckboxes);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+
+app.delete('/api/contact/:id', async (req, res) => {
+  try {
+    const contactId = req.params.id;
+    // Assuming you're using Mongoose for MongoDB interaction
+    const deletedContact = await Contact.findByIdAndDelete(contactId);
+    if (!deletedContact) {
+      return res.status(404).json({ success: false, message: 'Contact not found' });
+    }
+    res.json({ success: true, message: 'Contact deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
+
+
+app.put("/updatestatus/:id", async (req, res) => {
+  const { id } = req.params; // Extract user ID from URL parameters
+  const { status } = req.body; // Extract status from the request body
+
+  try {
+    // Find the user by user ID
+    let user = await UserModel.findById(id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Update user status
+    user.status = status;
+
+    await user.save(); // Save the updated user document
+    return res.json({ status: "User status updated" });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
+
+
+app.delete("/deleteuser/:id", async (req, res) => {
+  const { id } = req.params; // Extract user ID from URL parameters
+
+  try {
+    // Find the user by user ID and delete it
+    const deletedUser = await UserModel.findByIdAndDelete(id);
+    if (!deletedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    return res.json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
+
+
+
+
 app.post("/forget-password" , async(req,res)=>{
 const{email}=req.body;
 try{
@@ -116,7 +202,17 @@ _id:id,
 
 
 
-
+  app.get('/api/contact', async (req, res) => {
+    try {
+      // Assuming Contact is your Mongoose model
+      const contacts = await Contact.find();
+      res.json({ success: true, contacts });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+  });
+  
 
 
 app.post('/api/contact', async (req, res) => {

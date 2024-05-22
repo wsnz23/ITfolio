@@ -4,25 +4,14 @@ import "./intrest.css";
 import Sidebar from '../global/Sidebar.jsx';
 import Topbar from '../global/Topbar.jsx';
 
-const Invoices = () => {
+const Interest = () => {
   const [interest, setInterest] = useState("");
   const [interestsList, setInterestsList] = useState([]);
-  const [username, setUsername] = useState('');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   useEffect(() => {
-    // Fetch username from token when component mounts
-    const fetchUsername = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const res = await axios.post("http://localhost:3001/userdata", { token });
-        setUsername(res.data.data.Username);
-      } catch (error) {
-        console.error('Error fetching username:', error);
-      }
-    };
-
-    fetchUsername();
-    fetchInterests(); // Fetch interests after obtaining the username
+    fetchInterests(); // Fetch interests when component mounts
   }, []);
 
   const fetchInterests = async () => {
@@ -47,7 +36,6 @@ const Invoices = () => {
       console.error('Error fetching interests:', error);
     }
   };
-  
 
   const handleInputChange = (event) => {
     setInterest(event.target.value);
@@ -57,6 +45,10 @@ const Invoices = () => {
     if (interest.trim() !== "") {
       try {
         // Include username in the request data
+        const token = localStorage.getItem('token');
+        const res = await axios.post("http://localhost:3001/userdata", { token });
+        const username = res.data.data.Username;
+
         await axios.post('http://localhost:3001/interest', { username, interest });
         setInterest(""); // Clear the input box after adding the interest
         fetchInterests(); // Fetch interests after adding a new interest
@@ -68,15 +60,43 @@ const Invoices = () => {
 
   const handleDeleteInterest = async (id) => {
     try {
-      
-      console.log(id)
-      await axios.delete(`http://localhost:3001/interest/${id}`);
-      fetchInterests(); // Fetch interests after deleting an interest
+      setDeleteId(id);
+      setShowDeleteModal(true);
     } catch (error) {
       console.error('Error deleting interest:', error);
     }
   };
-  
+
+  const confirmDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3001/interest/${deleteId}`);
+      fetchInterests(); // Fetch interests after deleting an interest
+    } catch (error) {
+      console.error('Error deleting interest:', error);
+    } finally {
+      setShowDeleteModal(false);
+      setDeleteId(null);
+    }
+  };
+
+  const closeModal = () => {
+    setShowDeleteModal(false);
+    setDeleteId(null);
+  };
+
+  const DeleteModal = ({ show, onClose, onConfirm }) => {
+    if (!show) return null;
+
+    return (
+      <div className="work-overlay">
+        <div className="work-content">
+          <h3>Are you sure you want to delete this interest?</h3>
+          <button onClick={onConfirm}>Yes</button>
+          <button onClick={onClose}>Cancel</button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="view" display="flex">
@@ -103,8 +123,13 @@ const Invoices = () => {
           ))}
         </ul>
       </div>
+      <DeleteModal
+        show={showDeleteModal}
+        onClose={closeModal}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 };
 
-export default Invoices;
+export default Interest;

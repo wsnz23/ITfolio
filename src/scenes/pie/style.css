@@ -157,7 +157,8 @@
 
   .chart-container {
     width: 600px;
-    margin: 80px auto; /* Adjust top margin to center vertically */
+  margin-left: 100px;
+    margin-top: 60px; /* Adjust top margin to center vertically */
     padding: 20px;
     border-radius: 5px;
     height: fit-content;
@@ -167,7 +168,21 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow */
   }
   
+  .soft-container {
+    width: fit-content;
+  /* Adjust top margin to center vertically */
+    padding: 20px;
+    margin-left: 60% ; /* Adjust top margin to center vertically */
+    margin-top: -98%;/* Adjust top margin to center vertically */
+    border-radius: 5px;
+    height: fit-content;
+    background-color: rgba(245, 245, 245, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow */
+  }
 
+  
   .grid-container > div {
  
     text-align: center;

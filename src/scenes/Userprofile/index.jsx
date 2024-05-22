@@ -162,7 +162,8 @@ const userprofile = response.data.data.profilePicture;
 
   const renderInfoItem = (label, valueKey) => {
     if (valueKey === "languages") {
-      const languages = ["English", "Arabic","Spanish", "French", "German", "Chinese", "Japanese"];
+      const languages = ["English", "Arabic", "Spanish", "Turkish", "Mandarin (Chinese)", "French", "Bengali", "Russian", "Portuguese", "Urdu", "German", "Japanese", "Swahili", "Korean", "Hindi"];
+
     
       return (
         <div className="info-item">
@@ -173,7 +174,7 @@ const userprofile = response.data.data.profilePicture;
                 multiple
                 value={editableInfo.languages}
                 onChange={handleLanguageChange}
-                style={{ width: "180px" }} 
+                style={{ width: "180px" ,height:"200px"}} 
               >
                 {languages.map((language, index) => (
                   <option key={index} value={language}>{language}</option>
@@ -186,7 +187,8 @@ const userprofile = response.data.data.profilePicture;
         </div>
       );
     } else if (valueKey === "country" || valueKey === "city") {
-      const options = valueKey === "country" ? ["","Jordan", "USA", "UK", "France"] : ["","Amman", "New York", "London", "Paris"];
+      const options = valueKey === "country" ? ["","Jordan"] : ["","Amman", "Irbid", "Zarqa", "Salt", "Mafraq", "Karak", "Madaba", "Jerash", "Ajloun", "Aqaba", "Ma'an", "Tafilah"];
+
     
       return (
         <div className="info-item">

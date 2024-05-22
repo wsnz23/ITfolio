@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   return (
     <Box className="view"  display="flex">
-       <Box flex="1" overflow="auto">
+       <Box flex="1" overflow="hidden">
 <Pie/>
       {/* HEADER */}
       <Box

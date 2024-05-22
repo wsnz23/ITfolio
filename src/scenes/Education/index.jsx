@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios'; // Import Axios library
 import './education.css';
@@ -7,12 +6,12 @@ import Topbar from '../global/Topbar.jsx';
 
 const Education = () => {
   const [educationHistory, setEducationHistory] = useState([]);
-  const [newEducation, setNewEducation] = useState({ university: '', major: '', graduationDate: '' ,gpa:''});
+  const [newEducation, setNewEducation] = useState({ university: '', major: '', graduationDate: '', gpa: '' });
   const [editIndex, setEditIndex] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const majorInputRef = useRef(null);
-
- 
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,59 +32,56 @@ const Education = () => {
       const token = localStorage.getItem('token');
       const res = await axios.post("http://localhost:3001/userdata", { token });
       const loggedInUsername = res.data.data.Username;
-  
+
       // Include loggedInUsername in the request headers
       const response = await axios.get('http://localhost:3001/education', {
         headers: {
           'Username': loggedInUsername
         }
       });
-  
+
       // Filter interests to include only those belonging to the logged-in user
       const filterededu = response.data.filter(item => item.username === loggedInUsername);
-  
+
       setEducationHistory(filterededu);
     } catch (error) {
-      console.error('Error fetching interests:', error);
+      console.error('Error fetching education data:', error);
     }
   };
 
   const handleAddRow = async () => {
     try {
       const token = localStorage.getItem('token');
-      console.log(token); // Log the token to check if it's correct
       // Fetch user data using the token
       const res = await axios.post("http://localhost:3001/userdata", { token });
       const username = res.data.data.Username;
-  
+
       // Include username in the newEducation object
       const educationData = { ...newEducation, username };
-  
+
       if (editIndex !== null) {
         // If editIndex is not null, it means we are editing an existing row
         const updatedHistory = [...educationHistory];
         updatedHistory[editIndex] = educationData; // Update the existing row with edited data
         setEducationHistory(updatedHistory); // Update education history state with updated data
-  
+
         // Make PATCH request to update education data in the database
         await axios.patch(`http://localhost:3001/education/${educationHistory[editIndex]._id}`, educationData);
-        
+
         // Reset editIndex and newEducation state
         setEditIndex(null);
-        setNewEducation({ university: '', major: '', graduationDate: '' ,gpa:''});
+        setNewEducation({ university: '', major: '', graduationDate: '', gpa: '' });
       } else {
         // If editIndex is null, it means we are adding a new row
         // Make POST request to add new education data
         const response = await axios.post('http://localhost:3001/education', educationData);
         setEducationHistory([...educationHistory, response.data]); // Update education history state with newly added data
-        setNewEducation({ university: '', major: '', graduationDate: '',gpa:'' }); // Clear input fields
+        setNewEducation({ university: '', major: '', graduationDate: '', gpa: '' }); // Clear input fields
       }
     } catch (error) {
       console.error('Error adding education data:', error);
     }
   };
-  
-  
 
   const handleEditRow = (index) => {
     const editData = educationHistory[index];
@@ -93,17 +89,42 @@ const Education = () => {
     setEditIndex(index);
   };
 
-  const handleRemoveRow = async (id) => {
+  const handleRemoveRow = (id) => {
+    setDeleteId(id);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
     try {
-      console.log(id)
-      await axios.delete(`http://localhost:3001/education/${id}`); // Use the document ID for deletion
-      const updatedHistory = educationHistory.filter((item) => item._id !== id); // Filter out the deleted record
+      await axios.delete(`http://localhost:3001/education/${deleteId}`); // Use the document ID for deletion
+      const updatedHistory = educationHistory.filter((item) => item._id !== deleteId); // Filter out the deleted record
       setEducationHistory(updatedHistory); // Update education history state after deletion
     } catch (error) {
       console.error('Error deleting education data:', error);
+    } finally {
+      setShowDeleteModal(false);
+      setDeleteId(null);
     }
   };
-  
+
+  const closeModal = () => {
+    setShowDeleteModal(false);
+    setDeleteId(null);
+  };
+
+  const DeleteModal = ({ show, onClose, onConfirm }) => {
+    if (!show) return null;
+
+    return (
+      <div className="work-overlay">
+        <div className="work-content">
+          <h3>Are you sure you want to delete this?</h3>
+          <button onClick={onConfirm}>Yes</button>
+          <button onClick={onClose}>Cancel</button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="view" display="flex">
@@ -139,7 +160,7 @@ const Education = () => {
             max={(new Date()).getFullYear()}
             className='work-input'
           />
-             <input
+          <input
             type="text"
             name="gpa"
             value={newEducation.gpa}
@@ -149,8 +170,8 @@ const Education = () => {
           />
           <br /><br />
           <button style={{ textAlign: 'center', marginLeft: '300px' }} className='intersetbutton' onClick={handleAddRow}>
-  {editIndex !== null ? <><i className="fa fa-save"></i> Save</> : <> <i className="fa fa-plus-circle"></i> Add</>}
-</button>
+            {editIndex !== null ? <><i className="fa fa-save"></i> Save</> : <> <i className="fa fa-plus-circle"></i> Add</>}
+          </button>
         </div>
         <br />
         <table>
@@ -173,16 +194,19 @@ const Education = () => {
                 <td>
                   <button className='intersetbutton' onClick={() => handleEditRow(index)}><i className="fa fa-edit"></i> Edit</button>
                   <button className='intersetbutton' onClick={() => handleRemoveRow(item._id)}><i className="fa fa-trash"></i> Delete</button>
-
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
+     
+      </div>   <DeleteModal
+          show={showDeleteModal}
+          onClose={closeModal}
+          onConfirm={confirmDelete}
+        />
     </div>
   );
 };
 
 export default Education;
-

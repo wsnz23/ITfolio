@@ -46,6 +46,8 @@ const Resume = () => {
   const [usermajor, setusermajor] = useState([]);
   const [useraward, setuseraward] = useState([]);
   const [userawardsource, setuserawardsource] = useState([]);
+  const [usersoft, setusersoftskills] = useState([]);
+
 
   const fetchData = async () => {
     try {
@@ -136,8 +138,19 @@ const Resume = () => {
     
       setuseraward(useraward)
       setuserawardsource(userawardsource)
- console.log(useraward)
- console.log(userawardsource)   
+
+
+      
+      const softresponse = await Axios.get(`http://localhost:3001/user-checkboxes/${loggedInUsername}`);
+    
+    // Check if the response data has a 'checkboxes' array
+    if (softresponse.data && Array.isArray(softresponse.data.checkboxes)) {
+      // Map the checkboxes array to extract labels
+      const usersoft = softresponse.data.checkboxes.map(item => item.label);
+      setusersoftskills(usersoft);}
+   
+ console.log(usersoft)
+  
 
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -223,6 +236,9 @@ const Resume = () => {
                   <h2>SKILLS</h2>
                   <ol className='olcv1'>
                     {userskill.map((skill, index) => (
+                      <li key={index}>{skill}</li>
+                    ))}
+                    {usersoft.map((skill, index) => (
                       <li key={index}>{skill}</li>
                     ))}
                   </ol>

@@ -14,6 +14,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
+import cis1 from "../../assets/cis1.png"
+import cis2 from "../../assets/cis2.png"
+import bit1 from "../../assets/bit1.png"
+import bit2 from "../../assets/bit2.png"
+import cs1 from "../../assets/cs1.png"
+import cs2 from "../../assets/cs2.png"
 
 function Mat({ skills, questions }) {
   const [selected, setSelected] = useState(null);
@@ -31,171 +37,391 @@ function Mat({ skills, questions }) {
 
   const bitnewSubmenuData   = [
     {
-      skills: "Computer Networks and Security",
+       skills: "Web Development",
+       sumRate: 0,
+       count: 3,
+       courses: [
+         {
+           name: "Web Applications Development",
+           rate: null
+         },
+         {
+           name: "Web Server Programming",
+           rate: null
+         },
+         {
+           name: "Advanced Web Development",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "E-Business and E-Commerce",
+       sumRate: 0,
+       count: 4,
+       courses: [
+         {
+           name: "Mobile Programming",
+           rate: null
+         },
+         {
+           name: "E-Payment Systems",
+           rate: null
+         },
+         {
+           name: "E-Business",
+           rate: null
+         },
+         {
+           name: "Business Intelligence",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Management Information Systems (MIS)",
+       sumRate: 0,
+       count: 10,
+       courses: [
+         {
+           name: "Management Information Systems",
+           rate: null
+         },
+         {
+           name: "Enterprise Resource Planning Systems",
+           rate: null
+         },
+         {
+           name: "Knowledge Management Systems",
+           rate: null
+         },
+         {
+           name: "Total Quality Management",
+           rate: null
+         },
+         {
+           name: "Document Analysis & Recognition",
+           rate: null
+         },
+         {
+           name: "Information Resource Management",
+           rate: null
+         },
+         {
+           name: "E-Learning & Applications",
+           rate: null
+         },
+         {
+           name: "E-Government",
+           rate: null
+         },
+         {
+           name: "Software Packages",
+           rate: null
+         },
+         {
+           name: "Enterprise Application Development",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Business Analytics and Decision Support",
+       sumRate: 0,
+       count: 4,
+       courses: [
+         {
+           name: "Simulation in Business",
+           rate: null
+         },
+         {
+           name: "Operations Research",
+           rate: null
+         },
+         {
+           name: "Accounting Principles (1)",
+           rate: null
+         },
+         {
+           name: "Principles of Microeconomics",
+           rate: null
+         }
+       ]
+     },
+      {
+       skills: "Database Management",
+       sumRate: 0,
+       count: 1,
+       courses: [
+         {
+           name: "Database Management Systems",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Systems Analysis and Design",
+       sumRate: 0,
+       count: 3,
+       courses: [
+         {
+           name: "Project Management",
+           rate: null
+         },
+         {
+           name: "Systems Analysis and Design",
+           rate: null
+         },
+         {
+           name: "Human Computer Interaction",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Digital Media and Multimedia Technologies",
+       sumRate: 0,
+       count: 1,
+       courses: [
+         {
+           name: "Multimedia",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Applied Mathematics",
+       sumRate: 0,
+       count: 1,
+       courses: [
+         {
+           name: "Calculus 1",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Computer Systems and Architecture",
+       sumRate: 0,
+       count: 1,
+       courses: [
+         {
+           name: "Operating Systems",
+           rate: null
+         }
+       ]
+     },
+       {
+       skills: "Algorithms and Data Structures",
+       sumRate: 0,
+       count: 2,
+       courses: [
+         {
+           name: "Data Structures",
+           rate: null
+         },
+         {
+           name: "Theory of Algorithms",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Foundations of Computer Science",
+       sumRate: 0,
+       count: 3,
+       courses: [
+         {
+           name: "Discrete Mathematics",
+           rate: null
+         },
+         {
+           name: "Fundamentals of Information Technology",
+           rate: null
+         },
+         {
+           name: "Linear Algebra for Computational Sciences",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Artificial Intelligence",
+       sumRate: 0,
+       count: 1,
+       courses: [
+         {
+           name: "Artificial Intelligence",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Computer Networks and Security",
+       sumRate: 0,
+       count: 5,
+       courses: [
+         {
+           name: "Information Security and Privacy",
+           rate: null
+         },
+         {
+           name: "Computer Networks",
+           rate: null
+         },
+         {
+           name: "Security Risk Management and Ethics",
+           rate: null
+         },
+         {
+           name: "Fundamentals of IoT",
+           rate: null
+         },
+         {
+           name: "Advanced Networking",
+           rate: null
+         }
+       ]
+     },
+  {
+       skills: "Data Science and Analytics",
+       sumRate: 0,
+       count: 6,
+       courses: [
+         {
+           name: "Statistical Packages",
+           rate: null
+         },
+         {
+           name: "Computer Ethics",
+           rate: null
+         },
+         {
+           name: "Semantic Web",
+           rate: null
+         },
+         {
+           name: "Information Retrieval",
+           rate: null
+         },
+         {
+           name: "Database Languages and Tools",
+           rate: null
+         },
+         {
+           name: "Data Mining",
+           rate: null
+         }
+       ]
+     },
+     {
+       skills: "Programming and Software Development",
+       sumRate: 0,
+       count: 4,
+       courses: [
+         {
+           name: "Computer Skills for Scientific Faculties (C++)",
+           rate: null
+         },
+         {
+           name: "Object Oriented Programming (Java)",
+           rate: null
+         },
+         {
+           name: "Advanced Java Programming",
+           rate: null
+         },
+         {
+           name: "Software Engineering",
+           rate: null
+         }
+       ]
+     }
+   ];
+   
+  
+   const csnewSubmenuData  = [
+    {
+      skills: "Applied Mathematics",
+      sumRate: 0,
+      count: 4,
+      courses: [
+        {
+          name: "Calculus 1",
+          rate: null
+        },
+        {
+          name: "Calculus 2",
+          rate: null
+        },
+        {
+          name: "Numerical Analysis",
+          rate: null
+        },
+        {
+          name: "Modeling and Simulation",
+          rate: null
+        }
+      ]
+    },
+    {
+      skills: "Computer Systems and Architecture",
+      sumRate: 0,
+      count: 7,
+      courses: [
+        {
+          name: "Operating Systems",
+          rate: null
+        },
+        {
+          name: "Physics",
+          rate: null
+        },
+        {
+          name: "Physics Lab",
+          rate: null
+        },
+        {
+          name: "Logic Design",
+          rate: null
+        },
+        {
+          name: "Computer Organization",
+          rate: null
+        },
+        {
+          name: "Parallel and Distributed Systems",
+          rate: null
+        },
+        {
+          name: "Computer Systems Performance",
+          rate: null
+        }
+      ]
+    },
+    {
+      skills: "Algorithms and Data Structures",
       sumRate: 0,
       count: 5,
       courses: [
         {
-          name: "Information Security and Privacy",
+          name: "Theory of Algorithms",
           rate: null
         },
         {
-          name: "Computer Networks",
+          name: "Data Structures",
           rate: null
         },
         {
-          name: "Security Risk Management and Ethics",
+          name: "Data Structures Lab",
           rate: null
         },
         {
-          name: "Fundamentals of IoT",
+          name: "Computational Problems and Techniques",
           rate: null
         },
         {
-          name: "Advanced Networking",
-          rate: null
-        }
-      ]
-    },
-    {
-      skills: "Web Development",
-      sumRate: 0,
-      count: 3,
-      courses: [
-        {
-          name: "Web Applications Development",
-          rate: null
-        },
-        {
-          name: "Web Server Programming",
-          rate: null
-        },
-        {
-          name: "Advanced Web Development",
-          rate: null
-        }
-      ]
-    },
-    {
-      skills: "Data Science and Analytics",
-      sumRate: 0,
-      count: 6,
-      courses: [
-        {
-          name: "Statistical Packages",
-          rate: null
-        },
-        {
-          name: "Computer Ethics",
-          rate: null
-        },
-        {
-          name: "Semantic Web",
-          rate: null
-        },
-        {
-          name: "Information Retrieval",
-          rate: null
-        },
-        {
-          name: "Database Languages and Tools",
-          rate: null
-        },
-        {
-          name: "Data Mining",
-          rate: null
-        }
-      ]
-    },
-    {
-      skills: "E-Business and E-Commerce",
-      sumRate: 0,
-      count: 4,
-      courses: [
-        {
-          name: "Mobile Programming",
-          rate: null
-        },
-        {
-          name: "E-Payment Systems",
-          rate: null
-        },
-        {
-          name: "E-Business",
-          rate: null
-        },
-        {
-          name: "Business Intelligence",
-          rate: null
-        }
-      ]
-    },
-    {
-      skills: "Management Information Systems (MIS)",
-      sumRate: 0,
-      count: 10,
-      courses: [
-        {
-          name: "Management Information Systems",
-          rate: null
-        },
-        {
-          name: "Enterprise Resource Planning Systems",
-          rate: null
-        },
-        {
-          name: "Knowledge Management Systems",
-          rate: null
-        },
-        {
-          name: "Total Quality Management",
-          rate: null
-        },
-        {
-          name: "Document Analysis & Recognition",
-          rate: null
-        },
-        {
-          name: "Information Resource Management",
-          rate: null
-        },
-        {
-          name: "E-Learning & Applications",
-          rate: null
-        },
-        {
-          name: "E-Government",
-          rate: null
-        },
-        {
-          name: "Software Packages",
-          rate: null
-        },
-        {
-          name: "Enterprise Application Development",
-          rate: null
-        }
-      ]
-    },
-    {
-      skills: "Business Analytics and Decision Support",
-      sumRate: 0,
-      count: 4,
-      courses: [
-        {
-          name: "Simulation in Business",
-          rate: null
-        },
-        {
-          name: "Operations Research",
-          rate: null
-        },
-        {
-          name: "Accounting Principles (1)",
-          rate: null
-        },
-        {
-          name: "Principles of Microeconomics",
+          name: "Graph Theory",
           rate: null
         }
       ]
@@ -203,7 +429,7 @@ function Mat({ skills, questions }) {
     {
       skills: "Foundations of Computer Science",
       sumRate: 0,
-      count: 3,
+      count: 4,
       courses: [
         {
           name: "Discrete Mathematics",
@@ -216,42 +442,9 @@ function Mat({ skills, questions }) {
         {
           name: "Linear Algebra for Computational Sciences",
           rate: null
-        }
-      ]
-    },
-    {
-      skills: "Applied Mathematics",
-      sumRate: 0,
-      count: 1,
-      courses: [
-        {
-          name: "Calculus 1",
-          rate: null
-        }
-      ]
-    },
-    {
-      skills: "Algorithms and Data Structures",
-      sumRate: 0,
-      count: 2,
-      courses: [
-        {
-          name: "Data Structures",
-          rate: null
         },
         {
-          name: "Theory of Algorithms",
-          rate: null
-        }
-      ]
-    },
-    {
-      skills: "Computer Systems and Architecture",
-      sumRate: 0,
-      count: 1,
-      courses: [
-        {
-          name: "Operating Systems",
+          name: "Theory of Computation",
           rate: null
         }
       ]
@@ -259,18 +452,129 @@ function Mat({ skills, questions }) {
     {
       skills: "Artificial Intelligence",
       sumRate: 0,
-      count: 1,
+      count: 2,
       courses: [
         {
           name: "Artificial Intelligence",
+          rate: null
+        },
+        {
+          name: "Machine Learning and Neural Networks",
           rate: null
         }
       ]
     },
     {
-      skills: "Programming and Software Development",
+      skills: "Database Management",
+      sumRate: 0,
+      count: 2,
+      courses: [
+        {
+          name: "Database Management Systems",
+          rate: null
+        },
+        {
+          name: "Database Technologies and Applications",
+          rate: null
+        }
+      ]
+    },
+    {
+      skills: "Digital Media and Multimedia Technologies",
+      sumRate: 0,
+      count: 2,
+      courses: [
+        {
+          name: "Computer Graphics",
+          rate: null
+        },
+        {
+          name: "Digital Image Processing",
+          rate: null
+        }
+      ]
+    },
+    {
+      skills: "Web Development",
+      sumRate: 0,
+      count: 2,
+      courses: [
+        {
+          name: "Web Applications Development",
+          rate: null
+        },
+        {
+          name: "Advanced Web Development",
+          rate: null
+        }
+      ]
+    },
+    {
+      skills: "Computer Networks and Security",
+      sumRate: 0,
+      count: 8,
+      courses: [
+        {
+          name: "Information Security and Privacy",
+          rate: null
+        },
+        {
+          name: "Computer Networks",
+          rate: null
+        },
+        {
+          name: "Advanced Networking",
+          rate: null
+        },
+        {
+          name: "Network Programming",
+          rate: null
+        },
+        {
+          name: "Mobile Wireless Networks",
+          rate: null
+        },
+        {
+          name: "Fundamentals of IoT",
+          rate: null
+        },
+        {
+          name: "Security of Web Applications",
+          rate: null
+        },
+        {
+          name: "Network Security",
+          rate: null
+        }
+      ]
+    },
+    {
+      skills: "Data Science and Analytics",
       sumRate: 0,
       count: 4,
+      courses: [
+        {
+          name: "Principles of Statistics",
+          rate: null
+        },
+        {
+          name: "Computer Ethics",
+          rate: null
+        },
+        {
+          name: "Applied Statistics",
+          rate: null
+        },
+        {
+          name: "Bioinformatics",
+          rate: null
+        }
+      ]
+    },
+{
+      skills: "Programming and Software Development",
+      sumRate: 0,
+      count: 8,
       courses: [
         {
           name: "Computer Skills for Scientific Faculties (C++)",
@@ -281,476 +585,177 @@ function Mat({ skills, questions }) {
           rate: null
         },
         {
-          name: "Advanced Java Programming",
+          name: "Software Engineering",
           rate: null
         },
         {
-          name: "Software Engineering",
+          name: "Advanced Programming in Special Languages",
+          rate: null
+        },
+        {
+          name: "Systems Programming and Compilers Construction",
+          rate: null
+        },
+        {
+          name: "Design and Implementation of Programming Languages",
+          rate: null
+        },
+        {
+          name: "Design Patterns and Clean Code",
+          rate: null
+        },
+        {
+          name: "Mobile Development Frameworks",
           rate: null
         }
       ]
-    },
-    {
+    }
+];
+
+
+const newSubmenuData  = [
+  {
+      skills: "Database Management",
+      sumRate: 0,
+      count: 5,
+      courses: [
+          { name: "Database Management Systems", rate: null },
+          { name: "Advanced Databases", rate: null },
+          { name: "Health Informatics", rate: null },
+          { name: "Database Technologies and Applications", rate: null },
+          { name: "Information and Knowledge Management", rate: null }
+      ]
+  },
+  {
       skills: "Systems Analysis and Design",
+      sumRate: 0,
+      count: 13,
+      courses: [
+          { name: "Computing Ethics and Documentation", rate: null },
+          { name: "Information Systems and Applications", rate: null },
+          { name: "Human Computer Interaction", rate: null },
+          { name: "Computer Assisted Learning", rate: null },
+          { name: "Project Management", rate: null },
+          { name: "Systems Analysis and Design", rate: null },
+          { name: "Information Technology Entrepreneurship and Innovation", rate: null },
+          { name: "User Interface/Experience Design", rate: null },
+          { name: "Business Process Re-engineering", rate: null },
+          { name: "Development and Operations (DevOps)", rate: null },
+          { name: "Information Systems Audit and Quality Assurance", rate: null },
+          { name: "Cloud Computing", rate: null },
+          { name: "Internet of Things (IoT)", rate: null }
+      ]
+  },
+  {
+      skills: "Digital Media and Multimedia Technologies",
+      sumRate: 0,
+      count: 5,
+      courses: [
+          { name: "Multimedia", rate: null },
+          { name: "Advanced Multimedia", rate: null },
+          { name: "Digital Image Processing", rate: null },
+          { name: "Virtual Reality", rate: null },
+          { name: "Digital Speech Processing", rate: null }
+      ]
+  },
+  {
+      skills: "Applied Mathematics",
+      sumRate: 0,
+      count: 1,
+      courses: [
+          { name: "Calculus 1", rate: null }
+      ]
+  },
+  {
+      skills: "Computer Systems and Architecture",
+      sumRate: 0,
+      count: 1,
+      courses: [
+          { name: "Operating Systems", rate: null }
+      ]
+  },
+  {
+      skills: "Algorithms and Data Structures",
+      sumRate: 0,
+      count: 2,
+      courses: [
+          { name: "Data Structures", rate: null },
+          { name: "Theory of Algorithms", rate: null }
+      ]
+  },
+  {
+      skills: "Foundations of Computer Science",
       sumRate: 0,
       count: 3,
       courses: [
-        {
-          name: "Project Management",
-          rate: null
-        },
-        {
-          name: "Systems Analysis and Design",
-          rate: null
-        },
-        {
-          name: "Human Computer Interaction",
-          rate: null
-        }
+          { name: "Discrete Mathematics", rate: null },
+          { name: "Fundamentals of Information Technology", rate: null },
+          { name: "Linear Algebra for Computational Sciences", rate: null }
       ]
-    },
-    {
-      skills: "Digital Media and Multimedia Technologies",
+  },
+  {
+      skills: "Artificial Intelligence",
+      sumRate: 0,
+      count: 2,
+      courses: [
+          { name: "Artificial Intelligence", rate: null },
+          { name: "Machine Learning and Neural Networks", rate: null }
+      ]
+  },
+  {
+      skills: "Web Development",
+      sumRate: 0,
+      count: 2,
+      courses: [
+          { name: "Web Applications Development", rate: null },
+          { name: "Web Server Programming", rate: null }
+      ]
+  },
+  {
+      skills: "E-Business and E-Commerce",
       sumRate: 0,
       count: 1,
       courses: [
-        {
-          name: "Multimedia",
-          rate: null
-        }
+          { name: "E-Payment Systems", rate: "" }
       ]
-    },
-    {
-      skills: "Database Management",
+  },
+   {
+      skills: "Computer Networks and Security",
       sumRate: 0,
-      count: 1,
+      count: 3,
       courses: [
-        {
-          name: "Database Management Systems",
-          rate: null
-        }
+          { name: "Information Security and Privacy", rate: null },
+          { name: "Computer Networks", rate: null },
+          { name: "Security of Web Applications", rate: null }
       ]
-    }
-  ];
-  
-  const csnewSubmenuData  = [
-      {
-        skills: "Programming and Software Development",
-        sumRate: 0,
-        count: 8,
-        courses: [
-          {
-            name: "Computer Skills for Scientific Faculties (C++)",
-            rate: null
-          },
-          {
-            name: "Object Oriented Programming (Java)",
-            rate: null
-          },
-          {
-            name: "Software Engineering",
-            rate: null
-          },
-          {
-            name: "Advanced Programming in Special Languages",
-            rate: null
-          },
-          {
-            name: "Systems Programming and Compilers Construction",
-            rate: null
-          },
-          {
-            name: "Design and Implementation of Programming Languages",
-            rate: null
-          },
-          {
-            name: "Design Patterns and Clean Code",
-            rate: null
-          },
-          {
-            name: "Mobile Development Frameworks",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Computer Networks and Security",
-        sumRate: 0,
-        count: 8,
-        courses: [
-          {
-            name: "Information Security and Privacy",
-            rate: null
-          },
-          {
-            name: "Computer Networks",
-            rate: null
-          },
-          {
-            name: "Advanced Networking",
-            rate: null
-          },
-          {
-            name: "Network Programming",
-            rate: null
-          },
-          {
-            name: "Mobile Wireless Networks",
-            rate: null
-          },
-          {
-            name: "Fundamentals of IoT",
-            rate: null
-          },
-          {
-            name: "Security of Web Applications",
-            rate: null
-          },
-          {
-            name: "Network Security",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Data Science and Analytics",
-        sumRate: 0,
-        count: 4,
-        courses: [
-          {
-            name: "Principles of Statistics",
-            rate: null
-          },
-          {
-            name: "Computer Ethics",
-            rate: null
-          },
-          {
-            name: "Applied Statistics",
-            rate: null
-          },
-          {
-            name: "Bioinformatics",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Applied Mathematics",
-        sumRate: 0,
-        count: 4,
-        courses: [
-          {
-            name: "Calculus 1",
-            rate: null
-          },
-          {
-            name: "Calculus 2",
-            rate: null
-          },
-          {
-            name: "Numerical Analysis",
-            rate: null
-          },
-          {
-            name: "Modeling and Simulation",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Computer Systems and Architecture",
-        sumRate: 0,
-        count: 7,
-        courses: [
-          {
-            name: "Operating Systems",
-            rate: null
-          },
-          {
-            name: "Physics",
-            rate: null
-          },
-          {
-            name: "Physics Lab",
-            rate: null
-          },
-          {
-            name: "Logic Design",
-            rate: null
-          },
-          {
-            name: "Computer Organization",
-            rate: null
-          },
-          {
-            name: "Parallel and Distributed Systems",
-            rate: null
-          },
-          {
-            name: "Computer Systems Performance",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Algorithms and Data Structures",
-        sumRate: 0,
-        count: 5,
-        courses: [
-          {
-            name: "Theory of Algorithms",
-            rate: null
-          },
-          {
-            name: "Data Structures",
-            rate: null
-          },
-          {
-            name: "Data Structures Lab",
-            rate: null
-          },
-          {
-            name: "Computational Problems and Techniques",
-            rate: null
-          },
-          {
-            name: "Graph Theory",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Foundations of Computer Science",
-        sumRate: 0,
-        count: 4,
-        courses: [
-          {
-            name: "Discrete Mathematics",
-            rate: null
-          },
-          {
-            name: "Fundamentals of Information Technology",
-            rate: null
-          },
-          {
-            name: "Linear Algebra for Computational Sciences",
-            rate: null
-          },
-          {
-            name: "Theory of Computation",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Artificial Intelligence",
-        sumRate: 0,
-        count: 2,
-        courses: [
-          {
-            name: "Artificial Intelligence",
-            rate: null
-          },
-          {
-            name: "Machine Learning and Neural Networks",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Database Management",
-        sumRate: 0,
-        count: 2,
-        courses: [
-          {
-            name: "Database Management Systems",
-            rate: null
-          },
-          {
-            name: "Database Technologies and Applications",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Digital Media and Multimedia Technologies",
-        sumRate: 0,
-        count: 2,
-        courses: [
-          {
-            name: "Computer Graphics",
-            rate: null
-          },
-          {
-            name: "Digital Image Processing",
-            rate: null
-          }
-        ]
-      },
-      {
-        skills: "Web Development",
-        sumRate: 0,
-        count: 2,
-        courses: [
-          {
-            name: "Web Applications Development",
-            rate: null
-          },
-          {
-            name: "Advanced Web Development",
-            rate: null
-          }
-        ]
-      }
-    
-  ];
-  
-
-  const newSubmenuData  = [
-    {
-        skills: "Programming and Software Development",
-        sumRate: 0,
-        count: 11,
-        courses: [
-            { name: "Computer Skills for Scientific Faculties (C++)", rate: null },
-            { name: "Object Oriented Programming (Java)", rate: null },
-            { name: "Advanced Java Programming", rate: null },
-            { name: "Software Engineering", rate: null },
-            { name: "Advanced Software Engineering", rate: null },
-            { name: "Mobile Development Frameworks", rate: null },
-            { name: "Geographical Information Systems", rate: null },
-            { name: "Advanced AI Programming", rate: null },
-            { name: "Natural Language Processing", rate: null },
-            { name: "Intelligent Information Systems", rate: null },
-            { name: "Game Engines Design", rate: null }
-        ]
-    },
-    {
-        skills: "Computer Networks and Security",
-        sumRate: 0,
-        count: 3,
-        courses: [
-            { name: "Information Security and Privacy", rate: null },
-            { name: "Computer Networks", rate: null },
-            { name: "Security of Web Applications", rate: null }
-        ]
-    },
-    {
-        skills: "Database Management",
-        sumRate: 0,
-        count: 5,
-        courses: [
-            { name: "Database Management Systems", rate: null },
-            { name: "Advanced Databases", rate: null },
-            { name: "Health Informatics", rate: null },
-            { name: "Database Technologies and Applications", rate: null },
-            { name: "Information and Knowledge Management", rate: null }
-        ]
-    },
-    {
-        skills: "Systems Analysis and Design",
-        sumRate: 0,
-        count: 13,
-        courses: [
-            { name: "Computing Ethics and Documentation", rate: null },
-            { name: "Information Systems and Applications", rate: null },
-            { name: "Human Computer Interaction", rate: null },
-            { name: "Computer Assisted Learning", rate: null },
-            { name: "Project Management", rate: null },
-            { name: "Systems Analysis and Design", rate: null },
-            { name: "Information Technology Entrepreneurship and Innovation", rate: null },
-            { name: "User Interface/Experience Design", rate: null },
-            { name: "Business Process Re-engineering", rate: null },
-            { name: "Development and Operations (DevOps)", rate: null },
-            { name: "Information Systems Audit and Quality Assurance", rate: null },
-            { name: "Cloud Computing", rate: null },
-            { name: "Internet of Things (IoT)", rate: null }
-        ]
-    },
-    {
-        skills: "Digital Media and Multimedia Technologies",
-        sumRate: 0,
-        count: 5,
-        courses: [
-            { name: "Multimedia", rate: null },
-            { name: "Advanced Multimedia", rate: null },
-            { name: "Digital Image Processing", rate: null },
-            { name: "Virtual Reality", rate: null },
-            { name: "Digital Speech Processing", rate: null }
-        ]
-    },
-    {
-        skills: "Foundations of Computer Science",
-        sumRate: 0,
-        count: 3,
-        courses: [
-            { name: "Discrete Mathematics", rate: null },
-            { name: "Fundamentals of Information Technology", rate: null },
-            { name: "Linear Algebra for Computational Sciences", rate: null }
-        ]
-    },
-    {
-        skills: "Applied Mathematics",
-        sumRate: 0,
-        count: 1,
-        courses: [
-            { name: "Calculus 1", rate: null }
-        ]
-    },
-    {
-        skills: "Algorithms and Data Structures",
-        sumRate: 0,
-        count: 2,
-        courses: [
-            { name: "Data Structures", rate: null },
-            { name: "Theory of Algorithms", rate: null }
-        ]
-    },
-    {
-        skills: "Computer Systems and Architecture",
-        sumRate: 0,
-        count: 1,
-        courses: [
-            { name: "Operating Systems", rate: null }
-        ]
-    },
-    {
-        skills: "Data Science and Analytics",
-        sumRate: 0,
-        count: 2,
-        courses: [
-            { name: "Principles of Statistics", rate: null },
-            { name: "Data Mining", rate: null }
-        ]
-    },
-    {
-        skills: "Artificial Intelligence",
-        sumRate: 0,
-        count: 2,
-        courses: [
-            { name: "Artificial Intelligence", rate: null },
-            { name: "Machine Learning and Neural Networks", rate: null }
-        ]
-    },
-    {
-        skills: "Web Development",
-        sumRate: 0,
-        count: 2,
-        courses: [
-            { name: "Web Applications Development", rate: null },
-            { name: "Web Server Programming", rate: null }
-        ]
-    },
-    {
-        skills: "E-Business and E-Commerce",
-        sumRate: 0,
-        count: 1,
-        courses: [
-            { name: "E-Payment Systems", rate: "" }
-        ]
-    }
-
+  },
+{
+      skills: "Programming and Software Development",
+      sumRate: 0,
+      count: 11,
+      courses: [
+          { name: "Computer Skills for Scientific Faculties (C++)", rate: null },
+          { name: "Object Oriented Programming (Java)", rate: null },
+          { name: "Advanced Java Programming", rate: null },
+          { name: "Software Engineering", rate: null },
+          { name: "Advanced Software Engineering", rate: null },
+          { name: "Mobile Development Frameworks", rate: null },
+          { name: "Geographical Information Systems", rate: null },
+          { name: "Advanced AI Programming", rate: null },
+          { name: "Natural Language Processing", rate: null },
+          { name: "Intelligent Information Systems", rate: null },
+          { name: "Game Engines Design", rate: null }
+      ]
+  },
+{
+      skills: "Data Science and Analytics",
+      sumRate: 0,
+      count: 2,
+      courses: [
+          { name: "Principles of Statistics", rate: null },
+          { name: "Data Mining", rate: null }
+      ]
+  }
 ];
 
   const createMajor = async (e) => {
@@ -1180,6 +1185,34 @@ const handleCheckboxChange = async (submenuItem, isChecked) => {
             </Popup>
           )}
         </div>
+
+        <Box flex="1" style={{ marginBottom: "50px", marginTop: "-50px" }}>
+  <div className="card">
+    {/* Add images inside a container */}
+    <div style={{ display: 'flex' }}>
+      {userMajor === "CIS" && ( // Check if userMajor is "CIS"
+        <>
+          <img src={cis1} alt="CIS 1" style={{ width: '550px', height: '550px', marginRight: '10px' }} />
+          <img src={cis2} alt="CIS 2" style={{ width: '560px', height: '550px' }} />
+        </>
+      )}
+      {userMajor === "BIT" && ( // Check if userMajor is "BIT"
+        <>
+          <img src={bit1} alt="BIT 1" style={{ width: '550px', height: '550px', marginRight: '10px' }} />
+          <img src={bit2} alt="BIT 2" style={{ width: '560px', height: '550px' }} />
+        </>
+      )}
+      {userMajor === "CS" && ( // Check if userMajor is "CS"
+        <>
+          <img src={cs1} alt="CS 1" style={{ width: '550px', height: '550px', marginRight: '10px' }} />
+          <img src={cs2} alt="CS 2" style={{ width: '560px', height: '550px' }} />
+        </>
+      )}
+    </div>
+  </div>
+</Box>
+
+
       </Box>
 
       <Dialog

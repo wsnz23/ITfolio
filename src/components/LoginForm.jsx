@@ -12,7 +12,7 @@ const LoginForm = () => {
  
   const[pass,setPass]=useState("");
   const[username,setUsername]=useState("");
-  
+  const [statusMessage, setStatusMessage] = useState("");
 
   const navigate=useNavigate();
 
@@ -22,17 +22,35 @@ const LoginForm = () => {
         username,
         pass,
     })
-    .then(result => {
+    .then(async (result) => { // Add async here
         console.log(result);
         if (result.data.status === "ok") {
             localStorage.setItem('token', result.data.data);
-            navigate('/Dashboard');
         }
+        try {
+          const token = localStorage.getItem('token');
+          const response = await Axios.post("http://localhost:3001/userdata", { token });
+          const usercase = response.data.data.case;
+          const userstatus = response.data.data.status; // Add this line to get user status
+         
+          if (userstatus === "inactive") { // Check if user status is inactive
+            setStatusMessage("Your account is deactivated. Please contact support for assistance.");
+          } else if (usercase === "student") {
+            navigate('/Dashboard');
+          } else {
+            navigate('/Admin');
+          }
+
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+        
     })
     .catch(error => {
-        console.error("Error creating user:", error);
+        console.error("Error logging in:", error);
     });
-}
+  }
+  
 
   return (
     <div className="body">
@@ -55,7 +73,10 @@ const LoginForm = () => {
             <button type="submit" className="btn" onClick={loginUser}> 
               Login
             </button>
-          
+
+           <br></br>
+           <br></br>
+            {statusMessage && <p>{statusMessage}</p>}
       <div className="register-link">
         <p>Don't have an account? <Link to='/SignUp'>Register</Link></p>
       </div>

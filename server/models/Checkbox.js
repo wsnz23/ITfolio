@@ -14,7 +14,6 @@ const UserCheckboxSchema = new mongoose.Schema({
 
 });
 
-// Create model
 const Checkbox = mongoose.model('UserCheckbox', UserCheckboxSchema);
 
 module.exports = Checkbox;

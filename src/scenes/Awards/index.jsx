@@ -6,11 +6,14 @@ import Topbar from '../global/Topbar.jsx';
 
 const Awards = () => {
   const [awardhistory, setawardhistory] = useState([]);
-  const [newaward, setnewaward] = useState({ name: '', source: ''});
+  const [newaward, setnewaward] = useState({ name: '', source: '' });
   const [skillhistory, setskillhistory] = useState([]);
   const [newskill, setnewskill] = useState({ name: '', source: '' });
   const [editIndex, setEditIndex] = useState(null);
   const [editIndexSkill, setEditIndexSkill] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+  const [deleteType, setDeleteType] = useState('');
 
   const handlechange = (event) => {
     const { name, value } = event.target;
@@ -19,6 +22,7 @@ const Awards = () => {
       [name]: value,
     }));
   };
+
   const handleskillchange = (event) => {
     const { name, value } = event.target;
     setnewskill((prev) => ({
@@ -26,7 +30,7 @@ const Awards = () => {
       [name]: value,
     }));
   };
-  
+
   useEffect(() => {
     fetchaward();
     fetchSkills();
@@ -34,82 +38,68 @@ const Awards = () => {
 
   const fetchaward = async () => {
     try {
-      // Fetch username from token
       const token = localStorage.getItem('token');
       const res = await axios.post("http://localhost:3001/userdata", { token });
       const loggedInUsername = res.data.data.Username;
-  
-      // Include loggedInUsername in the request headers
+
       const response = await axios.get('http://localhost:3001/award', {
         headers: {
           'Username': loggedInUsername
         }
       });
-  
-      // Filter interests to include only those belonging to the logged-in user
+
       const filteraward = response.data.filter(item => item.username === loggedInUsername);
-  
+
       setawardhistory(filteraward);
     } catch (error) {
-      console.error('Error fetching interests:', error);
+      console.error('Error fetching awards:', error);
     }
   };
 
-  const fetchSkills= async () => {
+  const fetchSkills = async () => {
     try {
-      // Fetch username from token
       const token = localStorage.getItem('token');
       const res = await axios.post("http://localhost:3001/userdata", { token });
       const loggedInUsername = res.data.data.Username;
-  
-      // Include loggedInUsername in the request headers
+
       const response = await axios.get('http://localhost:3001/skill', {
         headers: {
           'Username': loggedInUsername
         }
       });
-  
-      // Filter interests to include only those belonging to the logged-in user
+
       const filteredskill = response.data.filter(item => item.username === loggedInUsername);
-  
+
       setskillhistory(filteredskill);
     } catch (error) {
-      console.error('Error fetching interests:', error);
+      console.error('Error fetching skills:', error);
     }
   };
 
-  const handleAddAward = async()  => {
+  const handleAddAward = async () => {
     try {
       const token = localStorage.getItem('token');
-      console.log(token); // Log the token to check if it's correct
-      // Fetch user data using the token
       const res = await axios.post("http://localhost:3001/userdata", { token });
       const username = res.data.data.Username;
-  
-      // Include username in the newEducation object
+
       const awarddata = { ...newaward, username };
-  
+
       if (editIndex !== null) {
-        // If editIndex is not null, it means we are editing an existing row
         const updatedHistory = [...awardhistory];
-        updatedHistory[editIndex] = awarddata; // Update the existing row with edited data
-        setawardhistory(updatedHistory); // Update education history state with updated data
-  
-        // Make PATCH request to update education data in the database
+        updatedHistory[editIndex] = awarddata;
+        setawardhistory(updatedHistory);
+
         await axios.patch(`http://localhost:3001/award/${awardhistory[editIndex]._id}`, awarddata);
-        
-        // Reset editIndex and newEducation state
+
         setEditIndex(null);
-        setnewaward({ name: '', source: ''});
+        setnewaward({ name: '', source: '' });
       } else {
-        // If editIndex is null, it means we are adding a new row
-        // Make POST request to add new education data
         const response = await axios.post('http://localhost:3001/award', awarddata);
-        setawardhistory([...awardhistory, response.data]); // Update education history state with newly added data
-        setnewaward({ name: '', source: '' }); // Clear input fields
+        setawardhistory([...awardhistory, response.data]);
+        setnewaward({ name: '', source: '' });
       }
     } catch (error) {
-      console.error('Error adding education data:', error);
+      console.error('Error adding award data:', error);
     }
   };
 
@@ -119,73 +109,84 @@ const Awards = () => {
     setEditIndex(index);
   };
 
- 
-
-  const handleDeleteAward = async (id) => {
-    try {
-      console.log(id)
-      await axios.delete(`http://localhost:3001/award/${id}`); // Use the document ID for deletion
-      const updatedHistory = awardhistory.filter((item) => item._id !== id); // Filter out the deleted record
-      setawardhistory(updatedHistory); // Update education history state after deletion
-    } catch (error) {
-      console.error('Error deleting education data:', error);
-    }
-  };
-
   const handleAddSkill = async () => {
     try {
-      // Fetch user data using the token
       const token = localStorage.getItem('token');
       const res = await axios.post("http://localhost:3001/userdata", { token });
       const username = res.data.data.Username;
-  
-      // Include username in the newSkill object
+
       const skilldata = { ...newskill, username };
-  
+
       if (editIndexSkill !== null) {
-        // If editIndexSkill is not null, it means we are editing an existing row
         const updatedHistory = [...skillhistory];
         updatedHistory[editIndexSkill] = skilldata;
-        setskillhistory(updatedHistory); // Update skill history state with updated data
-  
-        // Make PATCH request to update skill data in the database
+        setskillhistory(updatedHistory);
+
         await axios.patch(`http://localhost:3001/skill/${skillhistory[editIndexSkill]._id}`, skilldata);
-  
-        // Reset editIndexSkill and newSkill state
+
         setEditIndexSkill(null);
         setnewskill({ name: '', source: '' });
       } else {
-        // If editIndexSkill is null, it means we are adding a new row
-        // Make POST request to add new skill data
         const response = await axios.post('http://localhost:3001/skill', skilldata);
-        setskillhistory([...skillhistory, response.data]); // Update skill history state with newly added data
-        setnewskill({ name: '', source: '' }); // Clear input fields
+        setskillhistory([...skillhistory, response.data]);
+        setnewskill({ name: '', source: '' });
       }
     } catch (error) {
       console.error('Error adding skill data:', error);
     }
   };
-  
+
   const handleEditSkill = (index) => {
     const editData = skillhistory[index];
     setnewskill(editData);
-    setEditIndexSkill(index); // Use setEditIndexSkill to set the index for skill editing
+    setEditIndexSkill(index);
   };
-  
 
-  const handleDeleteSkill = async (id) => {
+  const handleRemoveRow = (id, type) => {
+    setDeleteId(id);
+    setDeleteType(type);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
     try {
-      console.log(id)
-      await axios.delete(`http://localhost:3001/skill/${id}`); // Use the document ID for deletion
-      const updatedHistory = skillhistory.filter((item) => item._id !== id); // Filter out the deleted record
-      setskillhistory(updatedHistory); // Update education history state after deletion
+      if (deleteType === 'award') {
+        await axios.delete(`http://localhost:3001/award/${deleteId}`);
+        const updatedHistory = awardhistory.filter((item) => item._id !== deleteId);
+        setawardhistory(updatedHistory);
+      } else if (deleteType === 'skill') {
+        await axios.delete(`http://localhost:3001/skill/${deleteId}`);
+        const updatedHistory = skillhistory.filter((item) => item._id !== deleteId);
+        setskillhistory(updatedHistory);
+      }
     } catch (error) {
-      console.error('Error deleting education data:', error);
+      console.error('Error deleting data:', error);
+    } finally {
+      setShowDeleteModal(false);
+      setDeleteId(null);
+      setDeleteType('');
     }
   };
 
+  const closeModal = () => {
+    setShowDeleteModal(false);
+    setDeleteId(null);
+    setDeleteType('');
+  };
 
+  const DeleteModal = ({ show, onClose, onConfirm }) => {
+    if (!show) return null;
 
+    return (
+      <div className="work-overlay">
+        <div className="work-content">
+          <h3>Are you sure you want to delete this?</h3>
+          <button onClick={onConfirm}>Yes</button>
+          <button onClick={onClose}>Cancel</button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="view" display="flex">
@@ -210,13 +211,12 @@ const Awards = () => {
             onChange={handleskillchange}
             className='work-input'
           />
-          <br></br>
-          <br></br>
-          
+          <br /><br />
           <button style={{ textAlign: 'center', marginLeft: '220px' }} className='intersetbutton' onClick={handleAddSkill}>
-  {editIndexSkill !== null ? <><i className="fa fa-save"></i> Save</> : <> <i className="fa fa-plus-circle"></i> Add</>}</button>
+            {editIndexSkill !== null ? <><i className="fa fa-save"></i> Save</> : <><i className="fa fa-plus-circle"></i> Add</>}
+          </button>
         </div>
-        <br></br>
+        <br />
         <table>
           <thead>
             <tr>
@@ -232,7 +232,7 @@ const Awards = () => {
                 <td>{skill.source}</td>
                 <td>
                   <button className='intersetbutton' onClick={() => handleEditSkill(index)}><i className="fa fa-edit"></i> Edit</button>
-                  <button className='intersetbutton' onClick={() => handleDeleteSkill(skill._id)}><i className="fa fa-trash"></i> Delete</button>
+                  <button className='intersetbutton' onClick={() => handleRemoveRow(skill._id, 'skill')}><i className="fa fa-trash"></i> Delete</button>
                 </td>
               </tr>
             ))}
@@ -242,7 +242,7 @@ const Awards = () => {
       <div className="skill-container">
         <h2 className="settings-title">Awards</h2>
         <div className="add-award">
-        <input
+          <input
             type="text"
             name="name"
             placeholder=" Award Name"
@@ -258,14 +258,12 @@ const Awards = () => {
             onChange={handlechange}
             className='work-input'
           />
-                    <br></br>
-          <br></br>
-
-        
+          <br /><br />
           <button style={{ textAlign: 'center', marginLeft: '220px' }} className='intersetbutton' onClick={handleAddAward}>
-  {editIndex !== null ? <><i className="fa fa-save"></i> Save</> : <> <i className="fa fa-plus-circle"></i> Add</>}</button>
+            {editIndex !== null ? <><i className="fa fa-save"></i> Save</> : <><i className="fa fa-plus-circle"></i> Add</>}
+          </button>
         </div>
-        <br></br>
+        <br />
         <table>
           <thead>
             <tr>
@@ -281,13 +279,18 @@ const Awards = () => {
                 <td>{award.source}</td>
                 <td>
                   <button className='intersetbutton' onClick={() => handleEditAward(index)}><i className="fa fa-edit"></i> Edit</button>
-                  <button className='intersetbutton' onClick={() => handleDeleteAward(award._id)}><i className="fa fa-trash"></i> Delete</button>
+                  <button className='intersetbutton' onClick={() => handleRemoveRow(award._id, 'award')}><i className="fa fa-trash"></i> Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <DeleteModal
+        show={showDeleteModal}
+        onClose={closeModal}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 };

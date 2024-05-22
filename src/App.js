@@ -51,6 +51,7 @@ import Awards from "./scenes/Awards";
 import Education from "./scenes/Education";
 import Cv from "./scenes/Cv/index";
 import Contacts from "./scenes/contacts";
+import Admin from "./scenes/Admin/admin";
 import Pie from "./scenes/pie";
 import Forgetpass from "./components/forgetpass";
 
@@ -90,8 +91,7 @@ function App() {
            <Route path="/Userprofile" element={<Team />} />
            <Route path="/Settings" element={<Settings />} />
            <Route path="/forgetpass" element={<Forgetpass />} />
-          
-
+           <Route path="/Admin" element={<Admin/>} />
 
             </Routes>
           </main>

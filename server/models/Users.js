@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
 FullName:{ type:String,},
-Email:{  type:String,},
+Email:{  type:String,unique:true},
 Username:{  type:String,unique:true},
 Password:{  type:String,},
 Major:{  type:String,},
@@ -33,7 +33,15 @@ languages: {
   profilePicture: {
     type: String,
     default: null
-  }
+  },
+ status: {
+    type: String,
+    default: "Active",
+  },
+  case: {
+     type: String,
+     default: "student",
+   }
 }
 )
 

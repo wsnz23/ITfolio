@@ -8,6 +8,8 @@ const Contacts = () => {
   const [workHistory, setWorkHistory] = useState([]);
   const [newWork, setNewWork] = useState({ company: '', position: '', startDate: '', endDate: '' });
   const [editIndex, setEditIndex] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const positionInputRef = useRef(null);
 
@@ -23,87 +25,102 @@ const Contacts = () => {
     fetchWorkHistory();
   }, []);
 
-    
-    const fetchWorkHistory = async () => {
-      try {
-        // Fetch username from token
-        const token = localStorage.getItem('token');
-        const res = await axios.post("http://localhost:3001/userdata", { token });
-        const loggedInUsername = res.data.data.Username;
-    
-        // Include loggedInUsername in the request headers
-        const response = await axios.get('http://localhost:3001/work', {
-          headers: {
-            'Username': loggedInUsername
-          }
-        });
-    
-        const filteredWork = response.data.filter(item => item.username === loggedInUsername);
+  const fetchWorkHistory = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.post("http://localhost:3001/userdata", { token });
+      const loggedInUsername = res.data.data.Username;
 
-        // Format work history data
-        const formattedWorkHistory = filteredWork.map(work => ({
-          ...work,
-          startDate: work.startDate ? new Date(work.startDate).toISOString().split('T')[0] : '', // Convert and format the start date
-          endDate: work.endDate ? new Date(work.endDate).toISOString().split('T')[0] : '' // Convert and format the end date
-        }));
-    
-        // Set the state with combined data
-        setWorkHistory(formattedWorkHistory);
-       
-      } catch (error) {
-        console.error('Error fetching interests:', error);
-      }
-    };
+      const response = await axios.get('http://localhost:3001/work', {
+        headers: {
+          'Username': loggedInUsername
+        }
+      });
+
+      const filteredWork = response.data.filter(item => item.username === loggedInUsername);
+
+      const formattedWorkHistory = filteredWork.map(work => ({
+        ...work,
+        startDate: work.startDate ? new Date(work.startDate).toISOString().split('T')[0] : '',
+        endDate: work.endDate ? new Date(work.endDate).toISOString().split('T')[0] : ''
+      }));
+
+      setWorkHistory(formattedWorkHistory);
+    } catch (error) {
+      console.error('Error fetching work history:', error);
+    }
+  };
 
   const handleAddRow = async () => {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post("http://localhost:3001/userdata", { token });
       const username = res.data.data.Username;
-  
+
       const newWorkData = { ...newWork, username };
-  
+
       if (editIndex !== null) {
-        // If editIndex is not null, it means we are editing an existing row
         const updatedHistory = [...workHistory];
-        updatedHistory[editIndex] = newWorkData; // Update the existing row with edited data
-        setWorkHistory(updatedHistory); // Update work history state with updated data
-  
-        // Make PATCH request to update work data in the database
+        updatedHistory[editIndex] = newWorkData;
+        setWorkHistory(updatedHistory);
+
         await axios.patch(`http://localhost:3001/work/${workHistory[editIndex]._id}`, newWorkData);
-  
-        // Reset editIndex and newWork state
+
         setEditIndex(null);
         setNewWork({ company: '', position: '', startDate: '', endDate: '' });
       } else {
-        // If editIndex is null, it means we are adding a new row
-        // Make POST request to add new work data
         const response = await axios.post('http://localhost:3001/work', newWorkData);
-        setWorkHistory([...workHistory, response.data]); // Update work history state with newly added data
-        setNewWork({ company: '', position: '', startDate: '', endDate: '' }); // Clear input fields
+        setWorkHistory([...workHistory, response.data]);
+        setNewWork({ company: '', position: '', startDate: '', endDate: '' });
       }
       await fetchWorkHistory();
     } catch (error) {
       console.error('Error adding work history:', error);
     }
   };
-  
+
   const handleEditRow = (index) => {
     const editData = workHistory[index];
     setNewWork(editData);
     setEditIndex(index);
   };
-  
 
-  const handleRemoveRow = async (id) => {
+  const handleRemoveRow = (id) => {
+    setDeleteId(id);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3001/work/${id}`);
-      const updatedWorkHistory = workHistory.filter((work) => work._id !== id);
+      await axios.delete(`http://localhost:3001/work/${deleteId}`);
+      const updatedWorkHistory = workHistory.filter((work) => work._id !== deleteId);
       setWorkHistory(updatedWorkHistory);
       await fetchWorkHistory();
     } catch (error) {
       console.error('Error deleting work history:', error);
+    } finally {
+      setShowDeleteModal(false);
+      setDeleteId(null);
     }
+  };
+
+  const closeModal = () => {
+    setShowDeleteModal(false);
+    setDeleteId(null);
+  };
+
+  const DeleteModal = ({ show, onClose, onConfirm }) => {
+    if (!show) return null;
+
+    return (
+      <div className="work-overlay">
+        <div className="work-content">
+          <h3>Are you sure you want to delete this?</h3>
+          <button onClick={onConfirm}>Yes</button>
+          <button onClick={onClose}>Cancel</button>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -130,7 +147,6 @@ const Contacts = () => {
             ref={positionInputRef}
             className='work-input'
           />
-     
           <input
             type="date"
             name="startDate"
@@ -139,7 +155,6 @@ const Contacts = () => {
             placeholder=" Start Date"
             className='work-input'
           />
-          
           <input
             type="date"
             name="endDate"
@@ -148,11 +163,10 @@ const Contacts = () => {
             placeholder=" End Date"
             className='work-input'
           />
-       
           <br /><br />
           <button style={{ textAlign: 'center', marginLeft: '300px' }} className='intersetbutton' onClick={handleAddRow}>
-  {editIndex !== null ? <><i className="fa fa-save"></i> Save</> : <> <i className="fa fa-plus-circle"></i> Add</>}
-</button>
+            {editIndex !== null ? <><i className="fa fa-save"></i> Save</> : <> <i className="fa fa-plus-circle"></i> Add</>}
+          </button>
         </div>
         <br />
         <table>
@@ -180,7 +194,12 @@ const Contacts = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      
+      </div>  <DeleteModal
+          show={showDeleteModal}
+          onClose={closeModal}
+          onConfirm={confirmDelete}
+        />
     </div>
   );
 };
