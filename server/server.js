@@ -17,6 +17,8 @@ const Checkbox= require('./models/Checkbox');
 const Contact = require('./models/Contact');
 var nodemailer=require('nodemailer');
 
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.json());
 app.use(cors());
 app.set("view engine","ejs");

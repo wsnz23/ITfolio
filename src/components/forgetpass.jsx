@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Container, Typography, TextField, Button, Box } from '@mui/material';
 import axios from 'axios'; // Import Axios
 import { styled } from '@mui/material/styles';
+import webbackground  from '../assets/5.png';
+
 const CustomButton = styled(Button)({
   borderRadius: 20,
   width: '20%',
@@ -41,12 +43,12 @@ const ForgetPass = () => {
     justifyContent="center"
     alignItems="center"
     height="100vh"
-    style={{ backgroundImage: "url('background.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#141b2d', color: 'white' }}
+    style={{ backgroundImage: `url(${webbackground})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#141b2d', color: 'white' }}
   >
     <Container maxWidth="sm">
       <Box
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.4)',
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
           padding: 20,
           borderRadius: 10,
           boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',

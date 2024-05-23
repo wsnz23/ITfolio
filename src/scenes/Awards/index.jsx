@@ -193,7 +193,7 @@ const Awards = () => {
       <Sidebar />
       <Topbar />
       <div className="skill-container">
-        <h2 className="settings-title">Skills</h2>
+        <h2 className="settings-title">Technical Skills Aquired from External Sources</h2>
         <div className="add-skill">
           <input
             type="text"
@@ -231,7 +231,7 @@ const Awards = () => {
                 <td>{skill.name}</td>
                 <td>{skill.source}</td>
                 <td>
-                  <button className='intersetbutton' onClick={() => handleEditSkill(index)}><i className="fa fa-edit"></i> Edit</button>
+                  <button className='intersetbutton' onClick={() => handleEditSkill(index)}><i className="fa fa-edit"></i> Edit</button><br></br><br></br>
                   <button className='intersetbutton' onClick={() => handleRemoveRow(skill._id, 'skill')}><i className="fa fa-trash"></i> Delete</button>
                 </td>
               </tr>
@@ -278,7 +278,7 @@ const Awards = () => {
                 <td>{award.name}</td>
                 <td>{award.source}</td>
                 <td>
-                  <button className='intersetbutton' onClick={() => handleEditAward(index)}><i className="fa fa-edit"></i> Edit</button>
+                  <button className='intersetbutton' onClick={() => handleEditAward(index)}><i className="fa fa-edit"></i> Edit</button><br></br><br></br>
                   <button className='intersetbutton' onClick={() => handleRemoveRow(award._id, 'award')}><i className="fa fa-trash"></i> Delete</button>
                 </td>
               </tr>

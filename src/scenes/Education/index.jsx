@@ -131,7 +131,8 @@ const Education = () => {
       <Sidebar />
       <Topbar />
       <div className="edu-container">
-        <h2>Education</h2>
+      <h2 style={{ textAlign: 'center' }}>Education</h2>
+      <br></br>
         <div>
           <input
             type="text"
@@ -192,7 +193,7 @@ const Education = () => {
                 <td>{item.graduationDate}</td>
                 <td>{item.gpa}</td>
                 <td>
-                  <button className='intersetbutton' onClick={() => handleEditRow(index)}><i className="fa fa-edit"></i> Edit</button>
+                  <button className='intersetbutton' onClick={() => handleEditRow(index)}><i className="fa fa-edit"></i> Edit</button><br></br><br></br>
                   <button className='intersetbutton' onClick={() => handleRemoveRow(item._id)}><i className="fa fa-trash"></i> Delete</button>
                 </td>
               </tr>

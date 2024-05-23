@@ -195,6 +195,11 @@ const Resume = () => {
       console.error('Error capturing CV:', error);
     });
   };
+
+  const capitalizedUserName = userName
+  .split(" ") // Split the string into words
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+  .join(" ");
   
   return (
     <Box className="view"  display="flex" >
@@ -216,9 +221,9 @@ const Resume = () => {
                 <div className="top-section">
                   <img src={userphoto} alt="Profile" className="p-picture" />
                   <div className="personal-info">
-                    <p>{userName}</p>
-                    <p>{userEmail}</p> {/* Replace with actual email */}
-                    <p>{userPhone}</p> {/* Replace with actual phone number */}
+                    <p>{capitalizedUserName}</p>
+                    <p>{userEmail}</p> 
+                    <p>{userPhone}</p> 
                     <p>{usercity}, {usercountry}</p>
                   </div>
                   <br></br>
@@ -233,11 +238,16 @@ const Resume = () => {
                   </ol>
                 </div>
                 <div className="section">
-                  <h2>SKILLS</h2>
+                <h2 style={{ whiteSpace: 'nowrap' }}>TECHNICAL SKILLS</h2>
                   <ol className='olcv1'>
                     {userskill.map((skill, index) => (
                       <li key={index}>{skill}</li>
                     ))}
+                  </ol>
+                </div>
+                <div className="section">
+                  <h2>SOFT SKILLS</h2>
+                  <ol className='olcv1'>
                     {usersoft.map((skill, index) => (
                       <li key={index}>{skill}</li>
                     ))}
@@ -255,7 +265,7 @@ const Resume = () => {
             </div> 
             <div className="side-section">
               <div className="section1">
-                <h2>work Experience</h2>
+                <h2>WORK EXPERIENCE</h2>
                 <ol className="connected-list">
                 {usercompany.map((company, index) => (
         <li key={index}>
@@ -269,7 +279,8 @@ const Resume = () => {
                 <ul className="connected-list">
                 {useruni.map((university, index) => (
         <li key={index}>
-          {university} -{usermajor[index]} / {usergraddate[index]} 
+          {university} -{usermajor[index]} 
+          <br></br> Graduatuion Date: {usergraddate[index]} 
           <br></br>
           GPA : {usergpa[index]} /4
         </li>

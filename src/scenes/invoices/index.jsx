@@ -115,11 +115,14 @@ const Interest = () => {
         <br /><br />
         <ul className="interests-list">
           {interestsList.map((item, index) => (
-            <li key={index}>
-              {item.interest}
-              <button className="interestdel" onClick={() => handleDeleteInterest(item._id)}><i className="fa fa-trash"></i> Delete</button>
-              <br></br> <br></br>
-            </li>
+           <li key={index} style={{ fontSize: '16px' }}>
+           {item.interest}
+           <button className="interestdel" onClick={() => handleDeleteInterest(item._id)}>
+             <i className="fa fa-trash"></i> Delete
+           </button>
+           <br /><br />
+         </li>
+         
           ))}
         </ul>
       </div>

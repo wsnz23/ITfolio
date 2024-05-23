@@ -1084,7 +1084,7 @@ const handleCheckboxChange = async (submenuItem, isChecked) => {
                     <tr key={j}>
                       <td>{submenuItem.label}</td>
                       <td>
-                        {item.label === 'Subjects Soft Skills' ? ( // Check if the label matches
+                        {item.label === 'courses (Soft Skills)' ? ( // Check if the label matches
                          <input
                          type='checkbox'
                          value={submenuItem.label}

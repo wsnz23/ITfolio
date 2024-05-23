@@ -1,6 +1,6 @@
 [
     {
-        "label": "Compulsory college subjects",
+        "label": "obligatory Faculty courses (technical skills)",
         "submenu": [
             {
                 "id": 1,
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "label": "Compulsory specialization subjects",
+        "label": "obligatory specialization courses (technical skills)",
         "submenu": [
             {
                 "id": 9,
@@ -190,7 +190,7 @@
         ]
     },
     {
-        "label": "Optional specialization subjects",
+        "label": "Elective specialization courses (technical skills)",
         "submenu": [
             {
                 "id": 31,
@@ -327,7 +327,7 @@
         ]
     },
     {
-        "label": "Subjects Soft Skills",
+        "label": "courses (Soft Skills)",
         "submenu": [
             {
                 "id": 31,

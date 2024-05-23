@@ -5,6 +5,7 @@ import Sidebar from '../global/Sidebar.jsx';
 import Topbar from '../global/Topbar.jsx';
 
 const Contacts = () => {
+  
   const [workHistory, setWorkHistory] = useState([]);
   const [newWork, setNewWork] = useState({ company: '', position: '', startDate: '', endDate: '' });
   const [editIndex, setEditIndex] = useState(null);
@@ -128,7 +129,7 @@ const Contacts = () => {
       <Sidebar />
       <Topbar />
       <div className="work-container">
-        <h2>Work History</h2>
+      <h2 style={{ textAlign: 'center' }}>Work History</h2><br></br>
         <div>
           <input
             type="text"
@@ -169,6 +170,7 @@ const Contacts = () => {
           </button>
         </div>
         <br />
+        
         <table>
           <thead>
             <tr>
@@ -187,7 +189,7 @@ const Contacts = () => {
                 <td>{work.startDate}</td>
                 <td>{work.endDate}</td>
                 <td>
-                  <button className='intersetbutton' onClick={() => handleEditRow(index)}><i className="fa fa-edit"></i> Edit</button>
+                  <button className='intersetbutton' onClick={() => handleEditRow(index)}><i className="fa fa-edit"></i> Edit</button><br></br><br></br>
                   <button className='intersetbutton' onClick={() => handleRemoveRow(work._id)}><i className="fa fa-trash"></i> Delete</button>
                 </td>
               </tr>

@@ -273,7 +273,7 @@ function SkillsBar() {
       <Box flex="1" overflow="auto">
       <div class="container">
         <div className="chart-container">
-          <h2 className="settings-title">Technical Skills acquired from university subjects</h2>
+          <h2 className="settings-title">Technical Skills acquired from university courses</h2>
           <Legend legend={legend} />
           {majorSkills.map((skill, index) => (
             <div className="skill-box" key={index}>
@@ -289,7 +289,7 @@ function SkillsBar() {
         </div>
         
         <div className="soft-container">
-            <h2 className="settings-title">Soft skills acquired from university subjects</h2>
+            <h2 className="settings-title">Soft skills acquired from university courses</h2>
             {userCheckboxes ? (
               <ul>
                 {userCheckboxes.checkboxes.map((checkbox, index) => (
