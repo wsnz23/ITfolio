@@ -4,9 +4,7 @@ import Sidebar from '../global/Sidebar.jsx';
 import Topbar from '../global/Topbar.jsx';
 import axios from 'axios';
 
-
 const Settings = () => {
-  const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -32,16 +30,47 @@ const Settings = () => {
     fetchData(); // Call the fetchData function immediately
   
   }, []);
-  
+
+  const validatePassword = (password) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (password.length < minLength) {
+      return "Password must be at least 8 characters long.";
+    }
+    if (!hasUpperCase) {
+      return "Password must contain at least one uppercase letter.";
+    }
+    if (!hasLowerCase) {
+      return "Password must contain at least one lowercase letter.";
+    }
+    if (!hasNumbers) {
+      return "Password must contain at least one number.";
+    }
+    if (!hasSpecialChar) {
+      return "Password must contain at least one special character.";
+    }
+
+    return "";
+  };
 
   const handlePasswordReset = async () => {
     const token = localStorage.getItem('token');
   
-    if (currentPassword === "" || newPassword === "" || confirmNewPassword === "") {
+    if (newPassword === "" || confirmNewPassword === "") {
       setMessage("Please fill in all fields.");
     } else if (newPassword !== confirmNewPassword) {
       setMessage("New password and confirm password do not match.");
     } else {
+      const passwordValidationMessage = validatePassword(newPassword);
+      if (passwordValidationMessage) {
+        setMessage(passwordValidationMessage);
+        return;
+      }
+
       try {
         // Make a PUT request to update the user's password
         const response = await axios.put(`http://localhost:3001/updateusers/${username}`, {
@@ -52,7 +81,6 @@ const Settings = () => {
           }
         });
         setMessage(response.data.status); // Display success message
-        setCurrentPassword("");
         setNewPassword("");
         setConfirmNewPassword("");
       } catch (error) {
@@ -61,24 +89,14 @@ const Settings = () => {
       }
     }
   };
-  
 
   return ( 
-    <div className="view"  display="flex" >
+    <div className="view" display="flex">
       <Sidebar />
       <Topbar />
       <div className="settings-container">
         <h2 className="settings-title">Change Password</h2>
-        <div className="form-group">
-          <label htmlFor="current-password" className="label-black">Current Password:</label>
-          <input
-            type="password"
-            className="form-control"
-            id="current-password"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-          />
-        </div>
+      
         <div className="form-group">
           <label htmlFor="new-password" className="label-black">New Password:</label>
           <input

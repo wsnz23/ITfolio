@@ -6,7 +6,7 @@ import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
 import Axios from "axios";
 import CloseIcon from '@mui/icons-material/Close';
-import AddIcon from '@mui/icons-material/Add';
+import InfoIcon from '@mui/icons-material/Info';
 import primary from "../../assets/primary.png";
 import primaryb from "../../assets/primaryb.png";
 
@@ -20,8 +20,11 @@ function SkillsBar() {
       display: 'flex',
       alignItems: 'center',
     },
+    checkbox: {
+      marginRight: '5px' // Add margin to the checkbox for spacing
+    },
     label: {
-      marginLeft: '10px',
+      marginLeft: '30px',
     },
   };
 
@@ -83,7 +86,7 @@ function SkillsBar() {
             </div>
           ))}
             <IconButton onClick={handleOpenModal} size="small" >
-  <AddIcon />know more
+  <InfoIcon />know more
 </IconButton>
         </div>
         <br />
@@ -293,9 +296,10 @@ function SkillsBar() {
             {userCheckboxes ? (
               <ul>
                 {userCheckboxes.checkboxes.map((checkbox, index) => (
-                  <li key={index} style={styles.listItem}><input type="checkbox" checked={checkbox.isChecked} readOnly />
+                  <li key={index} style={styles.listItem}><input type="checkbox" checked={checkbox.isChecked} readOnly  style={styles.checkbox} />
                     <h3>{checkbox.label}</h3>
-                    
+                    <br></br>
+                    <br></br>
                   </li>
                 ))}
               </ul>
