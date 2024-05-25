@@ -55,3 +55,9 @@
     color: black;
   }
   
+  .social-link ,.email-link{
+    cursor: pointer;
+    color:black;
+  }
+  
+  
